@@ -1,0 +1,4 @@
+{
+  "name": "@pages/user-menu-page",
+  "main": "./index.ts"
+}

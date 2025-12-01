@@ -1,0 +1,4 @@
+{
+  "name": "@pages/user-payment-page",
+  "main": "./index.ts"
+}
