@@ -1,0 +1,4 @@
+{
+    "name": "@core/router",
+    "main": "./index.ts"
+}

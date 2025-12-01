@@ -1,0 +1,4 @@
+{
+  "name": "@pages/user-orders-page",
+  "main": "./index.ts"
+}

@@ -1,0 +1,4 @@
+{
+  "name": "@pages/user-confirmation-page",
+  "main": "./index.ts"
+}
