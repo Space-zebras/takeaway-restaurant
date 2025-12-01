@@ -1,0 +1,1 @@
+/* ui logik, react komponenter typ, css-klasser, eventhandler?*/
