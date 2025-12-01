@@ -1,0 +1,65 @@
+org: adamstudentorg
+service: backend
+
+plugins:
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-north-1
+
+  iam:
+    role: arn:aws:iam::442090680129:role/nachoproblem-role
+    
+  environment:
+    ROLE: arn:aws:iam::442090680129:role/nachoproblem-role
+    ORG: adamstudentorg
+    MENU_TABLE: menu
+    STOCK_TABLE: stock
+    ORDERS_TABLE: orders
+
+build:
+  esbuild:
+    bundle: true  
+    minify: true
+
+package:
+  individually: true
+
+functions:
+  getMenu:
+    handler: menu/get-menu.handler
+    events:
+      - httpApi:
+          path: /menu
+          method: get
+
+  # updateMenuItem:
+  #   handler: menu/update-menu-item.mts
+  #   events:
+  #     - httpApi:
+  #         path: /menu/{id}
+  #         method: put
+
+  # createOrder:
+  #   handler: orders/create-order.mts
+  #   events:
+  #     - httpApi:
+  #         path: /orders
+  #         method: post
+
+
+  # getOrders:
+  #   handler: orders/get-orders.mts
+  #   events:
+  #     - httpApi:
+  #         path: /orders
+  #         method: get
+          
+  # updateOrder:
+  #   handler: orders/update-order.mts
+  #   events:
+  #     - httpApi:
+  #         path: /orders/{id}
+  #         method: put
