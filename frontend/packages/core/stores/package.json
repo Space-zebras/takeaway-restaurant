@@ -1,0 +1,4 @@
+{
+    "name": "@core/stores",
+    "main": "./index.ts"
+}
