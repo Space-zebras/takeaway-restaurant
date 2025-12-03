@@ -1,4 +1,18 @@
-:root {
+/* :root {
+  --color-bg: #D64541;
+  --color-text: #4A2E1F;
+  --color-container: #F7F1E3;
+  --color-button: #3D5B36;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--color-bg);
+} */
+
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -66,3 +80,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+ */

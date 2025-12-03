@@ -1,3 +1,5 @@
+import "./index.css"
+
 export function CartPage() {
-  return <h1>Cart Page</h1>;
+  return <h1 className="title">Cart Page</h1>;
 }

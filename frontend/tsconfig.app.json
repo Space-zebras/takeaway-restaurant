@@ -3,37 +3,46 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "lib": ["ES2022","DOM","DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
-    "types": ["vite/client"],
+    "types": [
+      "vite/client"
+    ],
     "skipLibCheck": true,
-
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-
     "baseUrl": ".",
     "paths": {
-      "@pages/*": [
-        "./packages/pages/*"
+      "@app/pages/*": [
+        "packages/pages/*"
       ],
-      "@core/*": [
-        "./packages/core/*"
+      "@app/base": [
+        "packages/base"
       ],
-      "@base/*": [
-        "./packages/base/*"
+      "@app/core": [
+        "packages/core"
+      ],
+      "@app/shared": [
+        "packages/shared"
       ]
     }
   },
-  "include": ["src","packages"]
+  "include": [
+    "packages",
+    "src"
+  ]
 }

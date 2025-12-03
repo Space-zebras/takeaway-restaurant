@@ -1,4 +1,4 @@
 {
-    "name": "@app/base",
+    "name": "@app/core",
     "main": "index.ts"
 }
