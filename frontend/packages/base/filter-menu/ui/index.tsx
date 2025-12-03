@@ -1,5 +1,5 @@
 import React from "react";
-import "./FilterMenu.css";
+import "./index.css";
 
 export const FilterMenu: React.FC = () => {
   // Temporary
@@ -22,3 +22,5 @@ export const FilterMenu: React.FC = () => {
     </div>
   );
 };
+
+export default FilterMenu;
