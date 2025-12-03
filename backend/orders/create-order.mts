@@ -1,14 +1,11 @@
 import { client } from "../services/db.mjs";
-import { PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand, GetItemCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { responseHandler } from "../services/response-handler.mjs";
 import { v4 as uuid } from "uuid";
 
-export interface MenuItem {
+export interface CartItemBackend {
     menuItem: string,
-    category: string[],
-    description: string,
-    ingredients: Record<string, number>,
-    price: number 
+    quantity: number
 }
 
 export interface UserInfo {
@@ -19,7 +16,7 @@ export interface UserInfo {
 export interface Order {
     orderId: string;
     user: UserInfo;
-    cart: MenuItem[];
+    cart: CartItemBackend[];
     totalPrice: number;
     payment: "online" | "in-house";
     status: "pending" | "completed" | "active" | "canceled";
@@ -35,6 +32,32 @@ export const handler = async (event: any) => {
 
         const createdAt = new Date().toISOString();
         const orderId = uuid();
+
+
+        for (const cartItem of body.cart) {
+            const menuItemResp = await client.send(new GetItemCommand({
+                TableName: "menu",
+                Key: { PK: { S: cartItem.menuItem } }
+            }));
+
+            if (!menuItemResp.Item) {
+                return responseHandler(404, { error: `MenuItem ${cartItem.menuItem} not found` });
+            }
+
+            const ingredients = menuItemResp.Item.ingredients?.M ?? {};
+
+            for (const [ingredient, value] of Object.entries(ingredients)) {
+                const amountNeeded = Number(value.N) * cartItem.quantity;
+
+                await client.send(new UpdateItemCommand({
+                    TableName: "stock",
+                    Key: { PK: { S: ingredient } },
+                    UpdateExpression: "SET quantity = quantity - :used",
+                    ConditionExpression: "quantity >= :used",
+                    ExpressionAttributeValues: { ":used": { N: String(amountNeeded) } }
+                }));
+            }
+        }
 
         const command = new PutItemCommand({
             TableName: "orders",
