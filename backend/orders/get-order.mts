@@ -1,8 +1,8 @@
 import { GetItemCommand } from "@aws-sdk/client-dynamodb";
-import { client } from "../services/db.mts";
-import { responseHandler } from "../services/response-handler.mts";
+import { client } from "../services/db.mjs";
+import { responseHandler } from "../services/response-handler.mjs";
 
-export const handler = async (event) => {
+export const handler = async (event: any) => {
     // const TableName = process.env.ORDER_TABLE
     try {
         const orderId = event.pathParameters?.id;

@@ -1,31 +1,32 @@
 import { QueryCommand } from "@aws-sdk/client-dynamodb";
-import { client } from "../services/db.mts";
-import { responseHandler } from "../services/response-handler.mts";
+import { client } from "../services/db.mjs";
+import { responseHandler } from "../services/response-handler.mjs";
 
-export const handler = async () => {
-    // const TableName = process.env.ORDER_TABLE;
+export const handler = async (event: any) => {
     try {
         const command = new QueryCommand({
            TableName: "orders",
            IndexName: "",
-           KeyConditionExpression: "orderKey = :ok",
+           KeyConditionExpression: "PK = :pk",
            ExpressionAttributeValues: {
-            ":ok": { S: "ORDER" }
+            ":pk": { S: "ORDER" }
            },
            ScanIndexForward: false, 
         })
-        //"orderKey = :ok AND begins_with(statusSort, :st)", ":st": { S: "pending#" }
 
-        const data = await client.send(new QueryCommand(command));
+        const data = await client.send(command);
 
         const orders = (data.Items || []).map((item) => ({
-            orderId: item.orderId,
-            status: item.status,
-            payment: item.payment,
-            totalPrice: item.totalPrice,
-            createdAt: item.createdAt,
-            modifiedAt: item.modifiedAt,
-            user: item.user,
+            orderId: item.orderId?.S,
+            status: item.status?.S,
+            payment: item.payment?.S,
+            totalPrice: item.totalPrice?.S,
+            createdAt: item.createdAt?.S,
+            modifiedAt: item.SK?.S,
+            user: {
+                name: item.user.M.name.S,
+                phoneNumber: item.user.M.phoneNumber.S
+            },
             cart: item.cart
 
         }))
