@@ -1,5 +1,5 @@
 import React from "react";
-import "./Container.css";
+import "./index.css";
 
 type Props = {
   children: React.ReactNode;
@@ -13,3 +13,5 @@ export const Container: React.FC<Props> = ({ children }) => {
     </div>
   );
 };
+
+export default Container;
