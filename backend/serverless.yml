@@ -1,4 +1,4 @@
-org: adamstudentorg
+org: ${env:ORG}
 service: backend
 
 plugins:
@@ -10,14 +10,16 @@ provider:
   region: eu-north-1
 
   iam:
-    role: arn:aws:iam::442090680129:role/nachoproblem-role
+    role: ${env:ROLE}
     
   environment:
-    ROLE: arn:aws:iam::442090680129:role/nachoproblem-role
-    ORG: adamstudentorg
+    ROLE: ${env:ROLE}
+    ORG: ${env:ORG}
     MENU_TABLE: menu
     STOCK_TABLE: stock
     ORDERS_TABLE: orders
+    API_KEY: ${ssm:/nachoproblem/API_KEY}
+    JWT_KEY: ${ssm:/nachoproblem/JWT_KEY}
 
 build:
   esbuild:
