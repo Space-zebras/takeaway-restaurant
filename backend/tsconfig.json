@@ -11,6 +11,6 @@
     "resolveJsonModule": true,
     "outDir": "build"
   },
-  "include": ["functions/**/*.mts", "services/**/*.mts"],
+  "include": ["functions/**/*.mts", "services/**/*.mts", "orders/**/*.mts"],
   "exclude": ["node_modules", ".serverless", "build"]
 }
