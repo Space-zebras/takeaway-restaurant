@@ -1,1 +1,1 @@
-/* exportera data, ui-komponenter osv */
+export * from "./ui";

@@ -1,1 +1,3 @@
-/* ui logik, react komponenter typ, css-klasser, eventhandler?*/
+export function CartPage() {
+  return <h1>Cart Page</h1>;
+}
