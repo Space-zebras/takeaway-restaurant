@@ -44,20 +44,20 @@ functions:
   #         path: /menu/{id}
   #         method: put
 
-  # createOrder:
-  #   handler: orders/create-order.mts
-  #   events:
-  #     - httpApi:
-  #         path: /orders
-  #         method: post
+  createOrder:
+    handler: orders/create-order.mts
+    events:
+      - httpApi:
+          path: /orders
+          method: post
 
 
-  # getOrders:
-  #   handler: orders/get-orders.mts
-  #   events:
-  #     - httpApi:
-  #         path: /orders
-  #         method: get
+  getOrders:
+    handler: orders/get-orders.mts
+    events:
+      - httpApi:
+          path: /orders
+          method: get
           
   # updateOrder:
   #   handler: orders/update-order.mts
@@ -65,3 +65,30 @@ functions:
   #     - httpApi:
   #         path: /orders/{id}
   #         method: put
+
+  resources:
+  Resources:
+    BookingsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: orders
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          # - IndexName: entityIndex
+          #   KeySchema:
+          #     - AttributeName: entityType
+          #       KeyType: HASH
+          #     - AttributeName: checkIn
+          #       KeyType: RANGE
+          #   Projection:
+          #     ProjectionType: ALL
