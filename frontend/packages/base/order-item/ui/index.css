@@ -1,0 +1,76 @@
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f1e3;
+  border: 1px solid #4a2e1f;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  color: #2e472c;
+  font-family: inherit;
+}
+
+/* LEft */
+.orderItem__leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.orderItem__date {
+  font-size: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.orderItem__order {
+  font-size: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.orderItem__orderLabel {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.orderItem__orderNumber {
+  font-size: 1rem;
+}
+
+/* Middle */
+.orderItem__middleCol {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 10px 30px 10px 30px;
+}
+
+.orderItem__statusLabel {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.orderItem__statusValue {
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+/* Right */
+.orderItem__rightCol button {
+  background: #3d5b36;
+  color: #fff;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: -3px 4px 0px #532d1f;
+}
+
+.orderItem__rightCol button:hover {
+  opacity: 0.9;
+}
