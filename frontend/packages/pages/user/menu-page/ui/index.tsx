@@ -2,9 +2,7 @@ import React from "react";
 import "./index.css";
 
 // Components
-import { Container } from "../../../../base/container/ui";
-import { FilterMenu } from "../../../../base/filter-menu/ui";
-import { MenuItemCard } from "../../../../base/menu-item";
+import { Container, FilterMenu, MenuItemCard } from "@app/base";
 
 export const MenuPage: React.FC = () => {
   return (

@@ -16,4 +16,5 @@
 
 .menuContainer__inner {
   padding: 2rem 3rem;
+  background-color: var(--color-container);
 }

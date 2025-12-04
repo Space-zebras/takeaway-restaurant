@@ -1,13 +1,11 @@
-import React from "react";
 import "./index.css";
 
-export const FilterMenu: React.FC = () => {
-  // Temporary
-  const categories = ["Nachos", "Burritos", "Tacos", "Sides", "Drinks"];
+export function FilterMenu() {
+  const categories: string[] = ["Nachos", "Burritos", "Tacos", "Sides", "Drinks"];
 
   return (
     <div className="filterMenu">
-      {categories.map((cat, index) => (
+      {categories.map((cat: string, index: number) => (
         <button
           key={cat}
           className={
@@ -21,6 +19,4 @@ export const FilterMenu: React.FC = () => {
       ))}
     </div>
   );
-};
-
-export default FilterMenu;
+}

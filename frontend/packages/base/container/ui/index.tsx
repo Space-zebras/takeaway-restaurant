@@ -5,13 +5,11 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const Container: React.FC<Props> = ({ children }) => {
+export function Container({ children }: Props) {
   return (
     <div className="menuContainer">
       <div className="menuContainer__banner" />
       <div className="menuContainer__inner">{children}</div>
     </div>
   );
-};
-
-export default Container;
+}
