@@ -1,5 +1,5 @@
 org: ${env:ORG}
-service: take-away-backend
+service: backend
 
 plugins:
   - serverless-offline
