@@ -1,7 +1,8 @@
-import "./App.css";
 import { RouterProvider } from "react-router-dom";
 
-import { router } from "@core/router";
+import "./App.css";
+import { router } from "@app/core";
+
 
 function App() {
   return (

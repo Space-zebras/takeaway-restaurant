@@ -1,7 +1,6 @@
-import React from "react";
 import "./index.css";
 
-export const FilterOrders: React.FC = () => {
+export function FilterOrders() {
   // Temporary
   const categories = ["All", "Active", "Completed"];
 
@@ -21,6 +20,4 @@ export const FilterOrders: React.FC = () => {
       ))}
     </div>
   );
-};
-
-export default FilterOrders;
+}

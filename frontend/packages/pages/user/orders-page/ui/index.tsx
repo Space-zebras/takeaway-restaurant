@@ -2,9 +2,9 @@ import React from "react";
 import "./index.css";
 
 // Components
-import { Container } from "@base/container";
-import { FilterOrders } from "@base/filter-orders";
-import { OrderItem } from "@base/order-item";
+import { Container, FilterOrders, OrderItem } from "@app/base";
+
+
 
 export const OrdersPage: React.FC = () => {
   return (
