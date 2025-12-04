@@ -3,7 +3,7 @@ import { client } from "../services/db.mjs";
 import { responseHandler } from "../services/response-handler.mjs";
 
 export const handler = async () => {
-  const TableName = process.env.MENU_TABLE;
+  const TableName = "menu";
 
   try {
     const data = await client.send(new ScanCommand({ TableName }));

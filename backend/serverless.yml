@@ -2,24 +2,23 @@ org: ${env:ORG}
 service: backend
 
 plugins:
+  - serverless-offline
+  # - serverless-esbuild
   - serverless-dotenv-plugin
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: eu-north-1
-
   iam:
-    role: ${env:ROLE}
+    role: ${env:IAM_ROLE}
     
   environment:
-    ROLE: ${env:ROLE}
+    ROLE: ${env:IAM_ROLE}
     ORG: ${env:ORG}
-    MENU_TABLE: menu
-    STOCK_TABLE: stock
-    ORDERS_TABLE: orders
-    API_KEY: ${ssm:/nachoproblem/API_KEY}
-    JWT_KEY: ${ssm:/nachoproblem/JWT_KEY}
+    MENU_TABLE: ${env:MENU_TABLE}
+    STOCK_TABLE: ${env:STOCK_TABLE}
+    ORDERS_TABLE: ${env:ORDERS_TABLE}
 
 build:
   esbuild:
@@ -45,7 +44,7 @@ functions:
   #         method: put
 
   createOrder:
-    handler: orders/create-order.mts
+    handler: orders/create-order.handler
     events:
       - httpApi:
           path: /orders
@@ -53,10 +52,17 @@ functions:
 
 
   getOrders:
-    handler: orders/get-orders.mts
+    handler: orders/get-orders.handler
     events:
       - httpApi:
           path: /orders
+          method: get
+
+  getOrder:
+    handler: orders/get-order.handler
+    events:
+      - httpApi:
+          path: /orders/{orderId}
           method: get
           
   # updateOrder:
@@ -66,9 +72,9 @@ functions:
   #         path: /orders/{id}
   #         method: put
 
-  resources:
+resources:
   Resources:
-    BookingsTable:
+    OrdersTable:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: orders
@@ -83,7 +89,7 @@ functions:
             KeyType: HASH
           - AttributeName: SK
             KeyType: RANGE
-        GlobalSecondaryIndexes:
+        # GlobalSecondaryIndexes:
           # - IndexName: entityIndex
           #   KeySchema:
           #     - AttributeName: entityType
