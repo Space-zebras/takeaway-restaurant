@@ -1,4 +1,4 @@
 {
-  "name": "@pages/user-orders-page",
+  "name": "@app/user-orders-page",
   "main": "./index.ts"
 }

@@ -1,4 +1,6 @@
-.cart-container {
+.title {
+    font-family: var(--font-bagel);
+}.cart-container {
   padding: 1.5rem;
   max-width: 600px;
   margin: 0 auto;

@@ -5,6 +5,7 @@
   justify-content: center;
   gap: 1rem;
   /* margin-top: -3rem; */
+  background-color: var(--color-container);
   margin-bottom: 2rem;
 }
 
@@ -28,4 +29,8 @@
   background: #f9b233;
   box-shadow: -4px 4px 0 #222222; /* test */
   color: #4a2e1f;
+}
+
+.filterMenu__button:hover {
+  opacity: 0.9;
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import "./index.css";
 
 type MenuItemCardProps = {
@@ -8,12 +7,12 @@ type MenuItemCardProps = {
   price: number;
 };
 
-export const MenuItemCard: React.FC<MenuItemCardProps> = ({
+export function MenuItemCard({
   image,
   title,
   description,
   price,
-}) => {
+}: MenuItemCardProps) {
   return (
     <article className="menuItem">
       <img className="menuItem__image" src={image} alt={title} />
@@ -26,6 +25,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
         <div className="menuItem__rightCol">
           <p className="menuItem__price">{price} kr</p>
+
           <div className="menuItem__qty">
             <button className="menuItem__qtyBtn">
               <svg
@@ -49,7 +49,9 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 />
               </svg>
             </button>
+
             <span className="menuItem__qtyNumber">1</span>
+
             <button className="menuItem__qtyBtn">
               <svg
                 width="24"
@@ -77,4 +79,4 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
       </div>
     </article>
   );
-};
+}

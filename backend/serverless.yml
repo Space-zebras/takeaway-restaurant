@@ -2,24 +2,23 @@ org: ${env:ORG}
 service: backend
 
 plugins:
+  - serverless-offline
+  # - serverless-esbuild
   - serverless-dotenv-plugin
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: eu-north-1
-
   iam:
-    role: ${env:ROLE}
+    role: ${env:IAM_ROLE}
     
   environment:
-    ROLE: ${env:ROLE}
+    ROLE: ${env:IAM_ROLE}
     ORG: ${env:ORG}
-    MENU_TABLE: menu
-    STOCK_TABLE: stock
-    ORDERS_TABLE: orders
-    API_KEY: ${ssm:/nachoproblem/API_KEY}
-    JWT_KEY: ${ssm:/nachoproblem/JWT_KEY}
+    MENU_TABLE: ${env:MENU_TABLE}
+    STOCK_TABLE: ${env:STOCK_TABLE}
+    ORDERS_TABLE: ${env:ORDERS_TABLE}
 
 build:
   esbuild:
@@ -44,20 +43,27 @@ functions:
   #         path: /menu/{id}
   #         method: put
 
-  # createOrder:
-  #   handler: orders/create-order.mts
-  #   events:
-  #     - httpApi:
-  #         path: /orders
-  #         method: post
+  createOrder:
+    handler: orders/create-order.handler
+    events:
+      - httpApi:
+          path: /orders
+          method: post
 
 
-  # getOrders:
-  #   handler: orders/get-orders.mts
-  #   events:
-  #     - httpApi:
-  #         path: /orders
-  #         method: get
+  getOrders:
+    handler: orders/get-orders.handler
+    events:
+      - httpApi:
+          path: /orders
+          method: get
+
+  getOrder:
+    handler: orders/get-order.handler
+    events:
+      - httpApi:
+          path: /orders/{orderId}
+          method: get
           
   # updateOrder:
   #   handler: orders/update-order.mts
@@ -65,3 +71,30 @@ functions:
   #     - httpApi:
   #         path: /orders/{id}
   #         method: put
+
+resources:
+  Resources:
+    OrdersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: orders
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        # GlobalSecondaryIndexes:
+          # - IndexName: entityIndex
+          #   KeySchema:
+          #     - AttributeName: entityType
+          #       KeyType: HASH
+          #     - AttributeName: checkIn
+          #       KeyType: RANGE
+          #   Projection:
+          #     ProjectionType: ALL
