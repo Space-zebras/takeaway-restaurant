@@ -1,5 +1,5 @@
 org: ${env:ORG}
-service: take-away-backend
+service: backend
 
 plugins:
   - serverless-offline
@@ -12,6 +12,7 @@ provider:
   region: eu-north-1
   iam:
     role: ${env:IAM_ROLE}
+    role: ${env:ROLE}
     
   environment:
     ROLE: ${env:IAM_ROLE}
@@ -19,6 +20,13 @@ provider:
     MENU_TABLE: ${env:MENU_TABLE}
     STOCK_TABLE: ${env:STOCK_TABLE}
     ORDERS_TABLE: ${env:ORDERS_TABLE}
+    ROLE: ${env:ROLE}
+    ORG: ${env:ORG}
+    MENU_TABLE: menu
+    STOCK_TABLE: stock
+    ORDERS_TABLE: orders
+    API_KEY: ${ssm:/nachoproblem/API_KEY}
+    JWT_KEY: ${ssm:/nachoproblem/JWT_KEY}
 
 build:
   esbuild:
