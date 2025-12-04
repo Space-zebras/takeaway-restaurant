@@ -9,19 +9,14 @@
     "@aws-sdk/client-dynamodb": "^3.940.0",
     "@aws-sdk/util-dynamodb": "^3.890.0",
     "dotenv": "^17.2.3",
-<<<<<<< HEAD
-    "serverless-dotenv-plugin": "^6.0.0"
-  },
-  "devDependencies": {
-=======
     "serverless-dotenv-plugin": "^6.0.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.159",
->>>>>>> 27-createorder
     "@types/node": "^24.10.1",
     "esbuild": "^0.27.0",
+    "serverless-esbuild": "^1.56.1",
+    "serverless-offline": "^14.4.0",
     "typescript": "^5.2.2"
   }
 }

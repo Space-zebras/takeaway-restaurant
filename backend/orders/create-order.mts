@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 
 export interface CartItemBackend {
     menuItem: string,
+    price: number,
     quantity: number
 }
 
@@ -13,64 +14,68 @@ export interface UserInfo {
     phoneNumber: string
 }
 
-export interface Order {
-    orderId: string;
+export interface OrderBody {
+    // orderId: string;
     user: UserInfo;
     cart: CartItemBackend[];
     totalPrice: number;
     payment: "online" | "in-house";
-    status: "pending" | "completed" | "active" | "canceled";
-    createdAt: string;
-    modifiedAt: string;
+    // status: "pending" | "completed" | "active" | "canceled";
+    // createdAt: string;
+    // modifiedAt: string;
 }
 
 export const handler = async (event: any) => {
     try {
         if(!event.body) return responseHandler(404, { error: "body missing"});
 
-        const body: Order = JSON.parse(event.body);
+        const TableName = process.env.ORDERS_TABLE;
+        const body: OrderBody = JSON.parse(event.body);
+
+        console.log("Event body:", event.body);
+
 
         const createdAt = new Date().toISOString();
         const orderId = uuid();
+        console.log(JSON.stringify(body, null, 2));
 
 
-        for (const cartItem of body.cart) {
-            const menuItemResp = await client.send(new GetItemCommand({
-                TableName: "menu",
-                Key: { PK: { S: cartItem.menuItem } }
-            }));
+        // for (const cartItem of body.cart) {
+        //     const menuItemResp = await client.send(new GetItemCommand({
+        //         TableName: "menu",
+        //         Key: { PK: { S: cartItem.menuItem } }
+        //     }));
 
-            if (!menuItemResp.Item) {
-                return responseHandler(404, { error: `MenuItem ${cartItem.menuItem} not found` });
-            }
+        //     if (!menuItemResp.Item) {
+        //         return responseHandler(404, { error: `MenuItem ${cartItem.menuItem} not found` });
+        //     }
 
-            const ingredients = menuItemResp.Item.ingredients?.M ?? {};
+        //     const ingredients = menuItemResp.Item.ingredients?.M ?? {};
 
-            for (const [ingredient, value] of Object.entries(ingredients)) {
-                const amountNeeded = Number(value.N) * cartItem.quantity;
+        //     for (const [ingredient, value] of Object.entries(ingredients)) {
+        //         const amountNeeded = Number(value.N) * cartItem.quantity;
 
-                await client.send(new UpdateItemCommand({
-                    TableName: "stock",
-                    Key: { PK: { S: ingredient } },
-                    UpdateExpression: "SET quantity = quantity - :used",
-                    ConditionExpression: "quantity >= :used",
-                    ExpressionAttributeValues: { ":used": { N: String(amountNeeded) } }
-                }));
-            }
-        }
+        //         await client.send(new UpdateItemCommand({
+        //             TableName: "stock",
+        //             Key: { PK: { S: ingredient } },
+        //             UpdateExpression: "SET quantity = quantity - :used",
+        //             ConditionExpression: "quantity >= :used",
+        //             ExpressionAttributeValues: { ":used": { N: String(amountNeeded) } }
+        //         }));
+        //     }
+        // }
 
         const command = new PutItemCommand({
-            TableName: "orders",
+            TableName,
             Item: {
             PK: { S: "ORDER" },
             SK: { S: orderId },
             cart: {
-                L: body.cart.map((item: any) => ({
+                L: body.cart.map((item: CartItemBackend) => ({
                     M: {
                         menuItem: { S: item.menuItem},
                         quantity: { N: String(item.quantity) },
-                        price: { N: String(item.price) },
-                        description: { S: item.description }
+                        price: {N: String(item.price)}
                     }
                 }))
             },
@@ -96,7 +101,8 @@ export const handler = async (event: any) => {
             orderId
         })
 
-    } catch (error) {
-        return responseHandler(500, { message: "Internal Server Error" });
+    } catch (error: any) {
+        console.error(error);
+        return responseHandler(500, { message: error.message, stack: error.stack });
     }
 }
