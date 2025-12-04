@@ -1,0 +1,35 @@
+/* Need to add font */
+
+.filterOrders {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  /* margin-top: -3rem; */
+  margin-bottom: 2rem;
+}
+
+.filterOrders__button {
+  padding: 0.5rem 1.5rem;
+  background: #3d5b36;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  color: #f7f1e3;
+  font-weight: 600;
+  box-shadow: -4px 4px 0 #222222; /* test colour for now */
+  transition: transform 0.1s;
+}
+
+/* .filterOrders__button:active {
+  transform: translateY(2px);
+} */
+
+.filterOrders__button--active {
+  background: #f9b233;
+  box-shadow: -4px 4px 0 #222222; /* test */
+  color: #4a2e1f;
+}
+
+.filterOrders__button:hover {
+  opacity: 0.9;
+}

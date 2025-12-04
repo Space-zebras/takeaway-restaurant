@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowJs": false,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "outDir": "build"
+  },
+  "include": ["menu/**/*.mts", "services/**/*.mts", "orders/**/*.mts"],
+  "exclude": ["node_modules", ".serverless", "build"]
+}
