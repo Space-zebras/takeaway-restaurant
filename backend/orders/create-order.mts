@@ -14,8 +14,8 @@ export interface UserInfo {
     phoneNumber: string
 }
 
-export interface Order {
-    orderId: string;
+export interface OrderBody {
+    // orderId: string;
     user: UserInfo;
     cart: CartItemBackend[];
     totalPrice: number;

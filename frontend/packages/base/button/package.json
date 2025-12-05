@@ -1,0 +1,4 @@
+{
+  "name": "@app/button",
+  "main": "./index.ts"
+}

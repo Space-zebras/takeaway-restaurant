@@ -7,7 +7,7 @@ import { Container, FilterMenu, MenuItemCard } from "@app/base";
 export const MenuPage: React.FC = () => {
   return (
     <main className="menuPage">
-      <Container title="Menu">
+      <Container title="Menu" variant="full">
         {/* filter buttons */}
         <FilterMenu />
         <div className="menuGrid">
