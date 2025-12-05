@@ -1,0 +1,43 @@
+.orderActions {
+  background: var(--color-container);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.orderActions__btn {
+  /* width: 100%; */
+  padding: 0.8rem 1rem;
+  margin-bottom: 3rem;
+  font-family: var(--font-bagel);
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+  border-radius: 50px;
+  box-shadow: -4px 4px 0 #222222;
+  border: none;
+  cursor: pointer;
+}
+
+.orderActions__btn--update {
+  background-color: var(--color-button);
+  color: var(--color-container);
+}
+
+.orderActions__btn--cancel {
+  background: var(--color-button);
+  border: 3px solid var(--color-button);
+  color: var(--color-container);
+}
+
+.orderActions__btn:active {
+  transform: translateY(2px);
+}
+
+.orderActions__btn:hover {
+  opacity: 0.9;
+}
