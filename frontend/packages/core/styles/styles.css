@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --color-bg: #D64541;
-  --color-text: #4A2E1F;
-  --color-container: #F7F1E3;
-  --color-button: #3D5B36;
+  --color-bg: #d64541;
+  --color-text: #4a2e1f;
+  --color-container: #f7f1e3;
+  --color-button: #3d5b36;
+  --color-active: #f9b233;
 
-  --font-roboto: 'Roboto', sans-serif;
-  --font-anton: 'Anton', sans-serif;
-  --font-bagel: 'Bagel Fat One';
+  --font-roboto: "Roboto", sans-serif;
+  --font-anton: "Anton", sans-serif;
+  --font-bagel: "Bagel Fat One";
 }
 
 * {

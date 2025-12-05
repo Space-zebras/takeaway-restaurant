@@ -4,17 +4,15 @@ import "./index.css";
 // Components
 import { Container, FilterOrders, OrderItem } from "@app/base";
 
-
-
 export const OrdersPage: React.FC = () => {
   return (
     <main className="ordersPage">
-      <Container>
+      <Container title="Orders">
         {/* filter buttons */}
         <FilterOrders />
 
         {/* Temp mock data for testing */}
-        <OrderItem date="21 APR 2025" orderNumber="3154" status="PENDING" />
+        <OrderItem date="21 APR 2025" orderNumber="8627" status="PENDING" />
 
         <OrderItem date="21 APR 2025" orderNumber="1444" status="PREPARING" />
 
