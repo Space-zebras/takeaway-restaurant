@@ -1,0 +1,38 @@
+.form__group {
+  background-color: #F7F1E3;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.form__label {
+  background-color: #F7F1E3;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+  font-family: Roboto, sans-serif;
+}
+
+.form__input {
+  background-color: #F7F1E3;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form__input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.form__input:invalid {
+  border-color: #201315;
+}
+
+.form__submit-hidden {
+  display: none;
+}
