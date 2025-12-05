@@ -1,7 +1,7 @@
 .payment-page {
-    display: flex;
-    padding: 2rem;
-    font-family: Roboto, sans-serif;
+  display: flex;
+  padding: 2rem;
+  font-family: Roboto, sans-serif;
 }
 
 .payment-page__layout {
@@ -14,10 +14,13 @@
 .payment-page__logo {
   font-family: "Bagel Fat One", sans-serif;
   font-size: 5rem;
-  color: #F7F1E3;
+  color: #f7f1e3;
   line-height: 1;
   margin: 0;
+}
 
+form {
+  background: var(--color-container);
 }
 
 .payment-page__content {
