@@ -1,9 +1,15 @@
-.home-page{
+.home-page {
     margin-top: 10%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
     align-items: center;
     padding: 2rem;
+    min-height: 400px;   /* hindrar hero från att bli för liten */
+}
+
+.hero-section{
+    width: 100%;
 }
 
 .click-container{
@@ -25,9 +31,17 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero {
+        width: 100%;
     }
 
-    .home-page .best-sellers{
+    .best-sellers {
         display: none;
     }
 }

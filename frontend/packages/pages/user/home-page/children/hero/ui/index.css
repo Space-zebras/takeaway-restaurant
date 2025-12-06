@@ -1,8 +1,16 @@
-.hero{
+.hero {
     position: relative;
+    min-height: 200px;       /* eller vad du vill */
 }
 
-.hero__heading{
+.hero > img {
+    width: 100%;
+    height: auto;
+    min-height: 200px;       /* säkerställ att bilden aldrig blir pytteliten */
+    object-fit: contain;     /* eller cover om du vill beskärning */
+}
+
+/* .hero__heading{
     font-family: var(--font-bagel);
     color: var(--color-container);
     font-size: clamp(4rem, 8vw, 6rem);
@@ -34,14 +42,14 @@
     .hero__img{
         display: none;
     }
-}
+} */
 
 @media (max-width: 450px){
     .hero{
         margin-top: 6rem;
     }
-    .hero__img{
+    /* .hero__img{
         display: block;
         width: 60px;
-    }
+    } */
 }

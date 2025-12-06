@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Container, MenuItemCard } from "@app/base";
 import { Hero } from "../children/hero";
-import { Button } from "@app/base";
 import './index.css'
 
 export const HomePage = () => {
@@ -10,7 +9,6 @@ export const HomePage = () => {
     <main className="home-page">
       <section className="hero-section">
         <Hero />
-        <Button size="small" onClick={() => navigate("/menu")} text="order here!" />
       </section>
       <section className="best-sellers">
         <Container title="best sellers">
