@@ -1,19 +1,20 @@
 .container {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .container--full {
   width: 100%;
   max-width: 90vw;
   background: #f7f1e3;
-  border-radius: 0 40px 40px 40px;
+  border-radius: 0 40px 0 40px;
   padding-bottom: 2rem;
 }
 
 .container--half {
-  width: 50%;
-  max-width: 50vw;
+  width: 50vw;
   height: auto;
   background: #f7f1e3;
   border-radius: 0 40px 0 40px;
@@ -43,4 +44,13 @@
 .container__inner {
   padding: 2rem 3rem;
   background-color: #F7F1E3;
+}
+
+
+@media (max-width: 1000px){
+  .container--half {
+      width: 100%;
+      max-width: 90vw;
+      padding-bottom: 2rem;
+  }
 }
