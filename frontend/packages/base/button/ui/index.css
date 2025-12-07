@@ -5,30 +5,40 @@
   justify-content: center;
   align-items: center;
   background: #3D5B36;
-  box-shadow: -5px 5px 1px #4A2E1F;
-  border-radius: 40px;
+  box-shadow: -0.3rem 0.3rem 0.1rem #4A2E1F;
+  border-radius: 2.5rem;
   color: #F7F1E3;
   font-family: "Bagel Fat One", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03rem;
+}
+
+.button:hover {
+  background-color: #F9B233;
+  color: #4A2E1F;
+}
+
+.button:active {
+  background-color: #F9B233;
+  color: #4A2E1F;
 }
 
 .button_small {
-  padding: 8px 22px;
-  font-size: 20px;
-  height: 40px;
-  line-height: 20px;
+  font-size: 1rem;
+  padding: 0.5rem 1.4rem;
+  height: 2.5rem;
 }
 
 .button_medium {
   width: 100%;
-  padding: 24px 40px;
-  font-size: 20px;
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
 }
+
 
 .button_large {
   width: 100%;
-  padding: 24px 40px;
-  font-size: 30px;
+  font-size: 1.875rem;
+  padding: 1.2rem 2.5rem;
 }
