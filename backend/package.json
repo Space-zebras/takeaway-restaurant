@@ -13,11 +13,12 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "serverless-esbuild": "^1.56.1",
-    "serverless-offline": "^14.4.0",
     "@types/aws-lambda": "^8.10.159",
     "@types/node": "^24.10.1",
     "esbuild": "^0.27.0",
+    "serverless": "^4.27.0",
+    "serverless-esbuild": "^1.56.1",
+    "serverless-offline": "^14.4.0",
     "typescript": "^5.2.2"
   }
 }

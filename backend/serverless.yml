@@ -3,16 +3,27 @@ service: backend
 
 plugins:
   - serverless-offline
-  # - serverless-esbuild
+# - serverless-esbuild
   - serverless-dotenv-plugin
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: eu-north-1
-  profile: ${env:PROFILE}
+  # profile: ${env:PROFILE}
   role: ${env:IAM_ROLE}
-    
+
+  httpApi:
+    cors:
+      allowOrigins:
+        - "*"
+      allowHeaders:
+        - "*"
+      allowMethods:
+        - GET
+        - POST
+      maxAge: 600
+
   environment:
     MENU_TABLE: ${env:MENU_TABLE}
     STOCK_TABLE: ${env:STOCK_TABLE}
