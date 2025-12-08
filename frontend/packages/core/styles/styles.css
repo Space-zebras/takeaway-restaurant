@@ -18,9 +18,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--color-bg);
 }
 
 body {
   font-family: var(--font-anton);
+  background-color: var(--color-bg);
 }
