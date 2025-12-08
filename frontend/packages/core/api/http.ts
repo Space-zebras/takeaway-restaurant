@@ -1,10 +1,7 @@
-const API_BASE = "https://f3b1atehce.execute-api.eu-north-1.amazonaws.com"
+const API_BASE_URL = "https://f3b1atehce.execute-api.eu-north-1.amazonaws.com"
 
-export async function http<T>(
-    path: string,
-    config: RequestInit = {}
-): Promise<T> {
-    const res = await fetch(`${API_BASE}${path}`, {
+export async function http<T>(path: string, config: RequestInit = {}): Promise<T> {
+    const res = await fetch(`${API_BASE_URL}${path}`, {
         headers: {
             "Content-Type": "application/json",
             ...(config.headers || {})
