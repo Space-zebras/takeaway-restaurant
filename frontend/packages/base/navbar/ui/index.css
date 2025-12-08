@@ -57,6 +57,10 @@
     color: var(--color-container);
 }
 
+.mobile-bottom-nav {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .navbar-links {
         position: absolute;
@@ -82,4 +86,49 @@
         order: 3;
     }
 
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+        height: 60px;
+
+        border: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: #3D5B36;
+        box-shadow: -0.3rem 0.3rem 0.1rem #4A2E1F;
+        border-radius: 2.5rem;
+        color: #F7F1E3;
+        font-family: "Bagel Fat One", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.03rem;
+
+        width: 100%;
+        font-size: 1.25rem;
+        padding: 1rem 2.5rem;
+        margin-bottom: 1rem;
+        margin-left: 0.5rem;
+/*         margin-right: 0.5rem; */
+    }
+
+    .mobile-nav-item {
+        flex: 1;
+        text-align: center;
+        color: var(--color-container);
+        font-size: 0.95rem;
+        text-decoration: none;
+        padding: 0.3rem 0;
+    }
+
+    .mobile-nav-item svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .navbar-cart {
+        display: none;
+    }
 }

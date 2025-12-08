@@ -27,6 +27,14 @@ export function Navbar() {
             <NavLink to="/cart" className="navbar-cart">
                 <FaShoppingCart />
             </NavLink>
+
+            <div className="mobile-bottom-nav">
+                <a href="/menu" className="mobile-nav-item">Menu</a>
+                <a href="/orders" className="mobile-nav-item">Orders</a>
+                <a href="/cart" className="mobile-nav-item">
+                    <FaShoppingCart />
+                </a>
+            </div>
         </nav>
     )
 }
