@@ -1,3 +1,4 @@
+export { AdminNavbar } from "./admin-navbar/ui";
 export { Navbar } from "./navbar/ui";
 export { FilterOrders } from "./filter-orders/ui";
 export { FilterMenu } from "./filter-menu/ui";
