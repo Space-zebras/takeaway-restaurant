@@ -56,7 +56,11 @@
     cursor: pointer;
     color: var(--color-container);
 }
-
+@media (min-width: 768px) {
+    .footer-content {
+        display: none;
+    }
+}
 @media (max-width: 768px) {
     .navbar-links {
         background-color: var(--color-bg);
@@ -73,6 +77,10 @@
         display: none;
         text-align: center;
         color: var(--color-container);
+    }
+
+    p {
+        margin-bottom: 1rem;
     }
 
     .navbar-links.open {
