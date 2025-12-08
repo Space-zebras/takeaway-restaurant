@@ -20,3 +20,9 @@
 .login:hover {
   color: var(--color-container);
 }
+
+@media (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}
