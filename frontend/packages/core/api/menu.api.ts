@@ -1,8 +1,8 @@
-import { http } from "./http";
+export const API_BASE = import.meta.env.VITE_API_BASE;
 
 export interface MenuItem {
     menuItem: string,
-    category: string | string[], //borde göra så databasen följer samma stil för alla menuITem kanske?
+    category: string[],
     ingredients: Record<string, number>,
     description: string,
     price: number, 
@@ -14,5 +14,9 @@ export interface MenuResponse {
 }
 
 export const MenuApi = {
-    getMenu: () => http<MenuResponse>("/menu")
-}
+  getMenu: async (): Promise<MenuResponse> => {
+    const res = await fetch(`${API_BASE}/menu`);
+    if (!res.ok) throw new Error("Failed to fetch menu");
+    return res.json();
+  }
+};
