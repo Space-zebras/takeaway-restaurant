@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Container, FilterMenu, MenuItemCard } from "@app/base";
+import { useNavigate } from "react-router-dom";
+import { Button, Container, FilterMenu, MenuItemCard } from "@app/base";
 import { useMenu } from "@app/core/hooks/useMenu";
 import "./index.css";
 
 export const MenuPage: React.FC = () => {
+  const navigate = useNavigate();
   const { data } = useMenu();
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("mains");
 
   const filteredItems =
     selectedCategory === "all"
@@ -31,6 +33,13 @@ export const MenuPage: React.FC = () => {
               price={item.price}
             />
           ))}
+        </div>
+        <div className="cart-button">
+          <Button
+            size="medium"
+            text="Go to cart"
+            onClick={() => navigate("/cart")}
+          />
         </div>
       </Container>
     </main>

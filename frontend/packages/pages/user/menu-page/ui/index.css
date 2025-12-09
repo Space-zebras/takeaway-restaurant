@@ -18,6 +18,15 @@
   margin-top: 1.5rem;
 }
 
+.cart-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-button .button_medium {
+  width: auto;
+}
+
 @media (max-width: 800px) {
   .menuGrid {
     grid-template-columns: 1fr;
