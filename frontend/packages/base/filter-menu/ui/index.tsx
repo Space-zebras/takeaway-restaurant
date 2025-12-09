@@ -1,20 +1,34 @@
 import "./index.css";
 
-export function FilterMenu() {
-  const categories: string[] = ["Nachos", "Burritos", "Tacos", "Sides", "Drinks"];
+type FilterMenuProps = {
+  selected: string;
+  onSelect: (category: string) => void;
+};
+
+export function FilterMenu({ selected, onSelect }: FilterMenuProps) {
+  const categories = [
+    "all",
+    "mains",
+    "nachos",
+    "burritos",
+    "tacos",
+    "sauces",
+    "drinks",
+  ];
 
   return (
     <div className="filterMenu">
-      {categories.map((cat: string, index: number) => (
+      {categories.map((cat) => (
         <button
           key={cat}
           className={
-            index === 0
+            selected === cat
               ? "filterMenu__button filterMenu__button--active"
               : "filterMenu__button"
           }
+          onClick={() => onSelect(cat)}
         >
-          {cat}
+          {cat.toUpperCase()}
         </button>
       ))}
     </div>
