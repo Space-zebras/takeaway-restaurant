@@ -1,6 +1,6 @@
 .menuPage {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -21,6 +21,7 @@
 .cart-button {
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 .cart-button .button_medium {
@@ -30,5 +31,28 @@
 @media (max-width: 800px) {
   .menuGrid {
     grid-template-columns: 1fr;
+  }
+  .cart-button {
+    justify-content: center;
+  }
+
+  .filterMenu button:nth-child(2) {
+    display: none;
+  }
+
+  .filterMenu button:nth-child(3) {
+    display: none;
+  }
+
+  .filterMenu button:nth-child(4) {
+    display: none;
+  }
+
+  .filterMenu {
+    flex-wrap: nowrap;
+  }
+
+  .cart-button {
+    margin-bottom: 2rem;
   }
 }
