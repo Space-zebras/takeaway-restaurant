@@ -1,11 +1,10 @@
-/* Need to add font */
-
 .filterMenu {
   display: flex;
   justify-content: center;
   gap: 1rem;
   background: var(--color-container);
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .filterMenu__button {
@@ -35,4 +34,17 @@
 
 .filterMenu__button:hover {
   opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .filterMenu {
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+
+  .filterMenu__button {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
 }
