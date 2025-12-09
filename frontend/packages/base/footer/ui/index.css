@@ -1,0 +1,28 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--color-bg);
+    font-family: var(--font-roboto);
+    gap: 20px;
+    color: var(--color-text);
+}
+
+.login {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.login:hover {
+  color: var(--color-container);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}
