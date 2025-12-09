@@ -10,7 +10,7 @@ export function Navbar() {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${menuOpen ? "menu-open" : ""}`}>
             <NavLink to="/" className="navbar-logo">
                 <img src={Logo} alt="Logo" />
             </NavLink>
@@ -20,9 +20,11 @@ export function Navbar() {
             </button>
 
             <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
+                <div className="nav-links-items">
                 <NavLink to="/menu">MENU</NavLink>
                 <NavLink to="/about">ABOUT US</NavLink>
                 <NavLink to="/orders">ORDERS</NavLink>
+                </div>
                 <div className="footer-content">
                     <p>nacho@email.com</p>
                     <p>+46 77 77 77</p>
@@ -32,6 +34,14 @@ export function Navbar() {
             <NavLink to="/cart" className="navbar-cart">
                 <FaShoppingCart />
             </NavLink>
+
+            <div className="mobile-bottom-nav">
+                <a href="/menu" className="mobile-nav-item">Menu</a>
+                <a href="/orders" className="mobile-nav-item">Orders</a>
+                <a href="/cart" className="mobile-nav-item">
+                    <FaShoppingCart />
+                </a>
+            </div>
         </nav>
     )
 }
