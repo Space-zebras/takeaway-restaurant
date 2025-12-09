@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://f3b1atehce.execute-api.eu-north-1.amazonaws.com"
+const API_BASE_URL = import.meta.env.VITE_API_BASE
 
 export async function http<T>(path: string, config: RequestInit = {}): Promise<T> {
     const res = await fetch(`${API_BASE_URL}${path}`, {
