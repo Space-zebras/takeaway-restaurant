@@ -1,0 +1,11 @@
+.orderStatusText {
+  background: var(--color-container);
+  font-family: var(--font-anton);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-button);
+  text-align: center;
+  margin: 4rem 0 4rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}

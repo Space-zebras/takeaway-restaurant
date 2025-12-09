@@ -1,26 +1,36 @@
-import React from "react";
 import "./index.css";
 
-export const FilterMenu: React.FC = () => {
-  // Temporary
-  const categories = ["Nachos", "Burritos", "Tacos", "Sides", "Drinks"];
+type FilterMenuProps = {
+  selected: string;
+  onSelect: (category: string) => void;
+};
+
+export function FilterMenu({ selected, onSelect }: FilterMenuProps) {
+  const categories = [
+    "all",
+    "mains",
+    "nachos",
+    "burritos",
+    "tacos",
+    "sauces",
+    "drinks",
+  ];
 
   return (
     <div className="filterMenu">
-      {categories.map((cat, index) => (
+      {categories.map((cat) => (
         <button
           key={cat}
           className={
-            index === 0
+            selected === cat
               ? "filterMenu__button filterMenu__button--active"
               : "filterMenu__button"
           }
+          onClick={() => onSelect(cat)}
         >
-          {cat}
+          {cat.toUpperCase()}
         </button>
       ))}
     </div>
   );
-};
-
-export default FilterMenu;
+}

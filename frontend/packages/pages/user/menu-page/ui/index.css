@@ -1,9 +1,7 @@
 .menuPage {
-  padding: 2rem;
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: #d64541;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -11,8 +9,17 @@
   box-sizing: border-box;
 }
 
-.menuPage__contentPlaceholder {
+.menuGrid {
+  background: var(--color-container);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
   margin-top: 1.5rem;
-  font-size: 1rem;
-  color: #333333;
+}
+
+@media (max-width: 800px) {
+  .menuGrid {
+    grid-template-columns: 1fr;
+  }
 }

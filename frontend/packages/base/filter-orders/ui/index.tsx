@@ -1,26 +1,28 @@
-import React from "react";
 import "./index.css";
 
-export const FilterOrders: React.FC = () => {
-  // Temporary
-  const categories = ["All", "Active", "Completed"];
+type Props = {
+  active: string;
+  onChange: (value: string) => void;
+};
+
+export function FilterOrders({ active, onChange }: Props) {
+  const categories = ["All", "Pending", "Preparing", "Completed", "Cancelled"];
 
   return (
     <div className="filterOrders">
-      {categories.map((cat, index) => (
+      {categories.map((cat) => (
         <button
           key={cat}
           className={
-            index === 0
+            active === cat
               ? "filterOrders__button filterOrders__button--active"
               : "filterOrders__button"
           }
+          onClick={() => onChange(cat)}
         >
           {cat}
         </button>
       ))}
     </div>
   );
-};
-
-export default FilterOrders;
+}

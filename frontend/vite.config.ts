@@ -6,11 +6,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@core': path.resolve(__dirname, 'packages/core'),
-
-      '@pages': path.resolve(__dirname, 'packages/pages'),
-
-      '@base': path.resolve(__dirname, 'packages/base')
+      '@app/pages': path.resolve(__dirname, 'packages/pages'),
+      '@app/base': path.resolve(__dirname, 'packages/base'),
+      '@app/core': path.resolve(__dirname, 'packages/core'),
+      '@app/shared': path.resolve(__dirname, 'packages/shared')
     }
   }
 })

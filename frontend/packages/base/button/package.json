@@ -1,4 +1,4 @@
 {
-  "name": "@base/button",
-  "main": "index.ts"
+  "name": "@app/button",
+  "main": "./index.ts"
 }

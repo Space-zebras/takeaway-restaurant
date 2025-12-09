@@ -1,4 +1,3 @@
-import React from "react";
 import "./index.css";
 
 type OrderItemProps = {
@@ -7,11 +6,7 @@ type OrderItemProps = {
   status: "PENDING" | "PREPARING" | "COMPLETE";
 };
 
-export const OrderItem: React.FC<OrderItemProps> = ({
-  date,
-  orderNumber,
-  status,
-}) => {
+export function OrderItem({ date, orderNumber, status }: OrderItemProps) {
   return (
     <article className="orderItem">
       <div className="orderItem__leftCol">
@@ -32,9 +27,11 @@ export const OrderItem: React.FC<OrderItemProps> = ({
       </div>
 
       <div className="orderItem__rightCol">
-        {/* {Placeholder button - replacing with componenet later} */}
-        <button className="orderItem__actionBtn">VIEW</button>
+        {/* Temporary link to order confirmation page */}
+        <a className="orderLink" href="/confirmation">
+          <button className="orderItem__actionBtn">VIEW</button>
+        </a>
       </div>
     </article>
   );
-};
+}

@@ -1,17 +1,26 @@
 import React from "react";
 import "./index.css";
 
-type Props = {
+type ContainerProps = {
+  title?: string;
   children: React.ReactNode;
+  variant?: "full" | "half";
 };
 
-export const Container: React.FC<Props> = ({ children }) => {
+export function Container({
+  title,
+  children,
+  variant = "full",
+}: ContainerProps) {
   return (
-    <div className="menuContainer">
-      <div className="menuContainer__banner" />
-      <div className="menuContainer__inner">{children}</div>
+    <div className={`container container--${variant}`}>
+      {title && (
+        <div className="container__banner">
+          <h2 className="container__title">{title}</h2>
+        </div>
+      )}
+
+      <div className="container__inner">{children}</div>
     </div>
   );
-};
-
-export default Container;
+}
