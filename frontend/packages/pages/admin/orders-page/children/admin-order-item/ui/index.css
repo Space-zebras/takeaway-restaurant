@@ -1,0 +1,80 @@
+.adminOrderItem {
+  background: var(--color-container);
+  padding: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.adminOrderItem__orderLabel {
+  background: var(--color-container);
+  font-weight: 700;
+  font-family: var(--font-roboto);
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.adminOrderItem__orderNumber {
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+}
+
+.adminOrderItem__statusLabel {
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+}
+
+.adminOrderItem__statusValue {
+  text-transform: uppercase;
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+}
+
+.adminOrderItem__info p {
+  margin: 0.2rem 0;
+}
+
+.adminOrderItem__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.adminOrderItem__btn {
+  background: var(--color-button);
+  color: var(--color-container);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+  font-family: var(--font-bagel);
+  font-weight: 400;
+  box-shadow: -3px 4px 0px #532d1f;
+}
+
+.adminOrderItem__btn--approve {
+  background: var(--color-button);
+  color: var(--color-container);
+}
+
+.adminOrderItem__btn--details {
+  background: var(--color-button);
+  color: var(--color-container);
+}
+
+.adminOrderItem__btn:hover {
+  opacity: 0.9;
+}
+
+.adminOrderItem__btn:active {
+  transform: translateY(2px);
+}
