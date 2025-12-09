@@ -17,6 +17,7 @@ import { AdminHomePage } from "@app/pages/admin/home-page/ui";
 import { AdminMenuPage } from "@app/pages/admin/menu-page/ui";
 import { AdminOrdersPage } from "@app/pages/admin/orders-page/ui";
 import { AdminStockPage } from "@app/pages/admin/stock-page/ui";
+import { AdminOrderDetailsPage } from "@app/pages/admin/orderdetails-page";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,7 @@ export const router = createBrowserRouter([
       { path: "menu-page", element: <AdminMenuPage /> },
       { path: "orders-page", element: <AdminOrdersPage /> },
       { path: "stock-page", element: <AdminStockPage /> },
+      { path: "/admin/order/:id", element: <AdminOrderDetailsPage /> },
     ],
   },
 
