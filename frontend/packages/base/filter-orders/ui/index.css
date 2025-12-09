@@ -1,11 +1,10 @@
-/* Need to add font */
-
 .filterOrders {
   background: var(--color-container);
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .filterOrders__button {
@@ -35,4 +34,17 @@
 
 .filterOrders__button:hover {
   opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .filterMenu {
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+
+  .filterMenu__button {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
 }
