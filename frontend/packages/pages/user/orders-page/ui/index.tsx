@@ -3,42 +3,19 @@ import "./index.css";
 
 // Components
 import { Container, FilterOrders, OrderItem } from "@app/base";
+import { useGetOrders } from "@app/core";
 
 export const OrdersPage: React.FC = () => {
-  const mockOrders = [
-    {
-      date: "21 APR 2025",
-      orderNumber: "8627",
-      status: "PREPARING",
-    },
-    {
-      date: "21 APR 2025",
-      orderNumber: "1444",
-      status: "PENDING",
-    },
-    {
-      date: "28 MAR 2025",
-      orderNumber: "7005",
-      status: "PREPARING",
-    },
-    {
-      date: "6 FEB 2025",
-      orderNumber: "9659",
-      status: "CANCELLED",
-    },
-    {
-      date: "31 JAN 2025",
-      orderNumber: "0407",
-      status: "CANCELLED",
-    },
-  ];
+  const { data } = useGetOrders();
+
+  const orders = data ?? []
 
   const [filter, setFilter] = React.useState("All");
 
   const filteredOrders =
     filter === "All"
-      ? mockOrders
-      : mockOrders.filter(
+      ? orders
+      : orders.filter(
           (o) => o.status.toLowerCase() === filter.toLowerCase()
         );
 
@@ -49,9 +26,9 @@ export const OrdersPage: React.FC = () => {
         <FilterOrders active={filter} onChange={setFilter} />
         {filteredOrders.map((order) => (
           <OrderItem
-            key={order.orderNumber}
-            date={order.date}
-            orderNumber={order.orderNumber}
+            key={order.orderId}
+            date={order.createdAt}
+            orderNumber={order.orderId}
             status={order.status}
           />
         ))}

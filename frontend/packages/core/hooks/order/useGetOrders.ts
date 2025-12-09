@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { OrderApi } from "packages/core/api/oders.api";
-import type { Order } from "packages/core/api/oders.api";
+import { OrderApi } from "@app/core";
+import type { Order } from "@app/core";
 
 export function useGetOrders() {
-    const [data, setData] = useState<Order[] | null>(null);
+    const [data, setData] = useState<Order[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
