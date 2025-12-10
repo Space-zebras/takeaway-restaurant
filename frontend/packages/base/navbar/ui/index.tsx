@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Login } from "@app/base";
+import { CartIcon, Login } from "@app/base";
 
-import { FaShoppingCart, FaTimes, FaBars } from "react-icons/fa";
+import { FaTimes, FaBars } from "react-icons/fa";
 import "./index.css";
 import { Logo } from "@app/core";
 
@@ -32,14 +32,14 @@ export function Navbar() {
                 </div>
             </div>
             <NavLink to="/cart" className="navbar-cart">
-                <FaShoppingCart />
+                <CartIcon variant="desktop"/>
             </NavLink>
 
             <div className="mobile-bottom-nav">
                 <a href="/menu" className="mobile-nav-item">Menu</a>
                 <a href="/orders" className="mobile-nav-item">Orders</a>
                 <a href="/cart" className="mobile-nav-item">
-                    <FaShoppingCart />
+                    <CartIcon variant="mobile"/>
                 </a>
             </div>
         </nav>
