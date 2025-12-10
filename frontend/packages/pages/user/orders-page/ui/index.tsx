@@ -39,17 +39,20 @@ export const OrdersPage: React.FC = () => {
     <main className="ordersPage">
       {!hasSearched && (
         <Container title="Your Orders">
-          <h2>Want to see earlier orders?<br/> Enter phone number</h2>
-          <form onSubmit={handlePhoneSubmit}>
-            <label>Enter phone number</label>
-            <input
-              type="text"
-              // placeholder="0705960436"
-              value={phoneInput}
-              onChange={(e) => setPhoneInput(e.target.value)}
-            />
-            <Button size="small" text="Search" />
-          </form>
+          <div className="form__container">
+            <h2>Want to see your earlier orders?</h2>
+            <form onSubmit={handlePhoneSubmit} className="form__group">
+              <label className="form__label">Enter your phone number</label>
+              <input
+                type="text"
+                className="form__input"
+                placeholder="e.g. 0701122334"
+                value={phoneInput}
+                onChange={(e) => setPhoneInput(e.target.value)}
+              />
+              <Button size="medium" text="Search" />
+            </form>
+          </div>
         </Container>
       )}
       {hasSearched && (

@@ -8,3 +8,26 @@
   padding: 3rem 1rem;
   box-sizing: border-box;
 }
+
+.form__container{
+  margin: 0 auto;
+  width: 50%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+
+  h2{
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  button{
+    margin-top: 2rem;
+    width: 70%;
+    align-self: center;
+  }
+
+  input::placeholder{
+    color: rgb(95, 95, 95);
+  }
+}
