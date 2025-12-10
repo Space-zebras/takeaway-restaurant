@@ -87,7 +87,7 @@ export const handler = async (event: any) => {
                 }
             },
             payment: { S: body.payment },
-            status: { S: "pending" },
+            status: { S: "PENDING" },
             createdAt: { S: createdAt },
             modifiedAt: { S: createdAt }
 
