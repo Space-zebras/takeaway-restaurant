@@ -62,6 +62,10 @@
   padding: 0.3rem 0;
 }
 
+.orderDetails__status {
+  text-transform: uppercase;
+}
+
 @media (max-width: 640px) {
   .orderDetails__content {
     flex-direction: column;
