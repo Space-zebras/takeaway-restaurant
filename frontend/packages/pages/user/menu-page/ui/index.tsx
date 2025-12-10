@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import { Container, FilterMenu, MenuItemCard } from "@app/base";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Container, FilterMenu, MenuItemCard } from "@app/base";
 import { useMenu } from "@app/core/hooks/useMenu";
 import "./index.css";
 
-export const MenuPage: React.FC = () => {
+export function MenuPage() {
+  const navigate = useNavigate();
   const { data } = useMenu();
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("mains");
 
   const filteredItems =
     selectedCategory === "all"
@@ -15,7 +17,7 @@ export const MenuPage: React.FC = () => {
 
   return (
     <main className="menuPage">
-      <Container title="Menu" variant="full">
+      <Container title="MENU" variant="full">
         <FilterMenu
           selected={selectedCategory}
           onSelect={setSelectedCategory}
@@ -32,7 +34,15 @@ export const MenuPage: React.FC = () => {
             />
           ))}
         </div>
+
+        <div className="cart-button">
+          <Button
+            size="medium"
+            text="Go to cart"
+            onClick={() => navigate("/cart")}
+          />
+        </div>
       </Container>
     </main>
   );
-};
+}

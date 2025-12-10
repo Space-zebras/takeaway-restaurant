@@ -7,7 +7,6 @@ type FilterMenuProps = {
 
 export function FilterMenu({ selected, onSelect }: FilterMenuProps) {
   const categories = [
-    "all",
     "mains",
     "nachos",
     "burritos",
