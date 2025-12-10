@@ -1,0 +1,37 @@
+.cart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.cart-icon svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-container);
+}
+
+.cart__number {
+  color: var(--color-container);
+  font-family: Anton;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .cart-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .cart__number {
+    color: var(--color-container);
+    font-family: Anton;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+

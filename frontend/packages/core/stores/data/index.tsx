@@ -43,10 +43,16 @@ export const useCartStore = create<CartState>()(persist((set, get) => ({
         set({ items: [] })
     },
     totalPrice: () => {
-    return get().items.reduce((total, item) => total + item.price * item.quantity, 0)
-},
-}),
- {name: "cart-storage" }
-))
+        return get().items.reduce(
+            (total, item) => total + item.price * item.quantity,
+            0
+        );
+    },
 
-
+      totalQuantity: () => {
+        return get().items.reduce((total, item) => total + item.quantity, 0);
+      },
+    }),
+    { name: "cart-storage" }
+  )
+);
