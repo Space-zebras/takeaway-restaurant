@@ -1,28 +1,29 @@
 # org: ${env:ORG}
 service: backend
+useDotenv: true
 
 plugins:
   - serverless-offline
 # - serverless-esbuild
-  - serverless-dotenv-plugin
+  # - serverless-dotenv-plugin
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: eu-north-1
-  # profile: ${env:PROFILE}
+  profile: ${env:PROFILE}
   role: ${env:IAM_ROLE}
 
   httpApi:
-    cors:
-      allowOrigins:
-        - "*"
-      allowHeaders:
-        - "*"
-      allowMethods:
-        - GET
-        - POST
-      maxAge: 600
+    cors: true
+      # allowOrigins:
+      #   - "*"
+      # allowHeaders:
+      #   - "*"
+      # allowMethods:
+      #   - GET
+      #   - POST
+      # maxAge: 600
 
   environment:
     MENU_TABLE: ${env:MENU_TABLE}
