@@ -2,7 +2,7 @@ import "./index.css";
 
 type ButtonProps = {
   size: "small" | "medium" | "large";
-  onClick: () => void;
+  onClick?: () => void;
   text: string;
 };
 
