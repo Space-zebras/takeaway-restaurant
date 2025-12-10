@@ -1,16 +1,21 @@
 import { useState } from "react";
-import { useCartStore, createOrder } from "@app/core";
-import { Container } from "@app/base";
+import { useNavigate } from "react-router-dom";
+import { Button, Container } from "@app/base";
+import { useCartStore } from "@app/core";
 import "./index.css";
 
 export function CartPage() {
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const { items, addToCart, removeFromCart, clearCart, totalPrice } = useCartStore();
+  const { items, addToCart, removeFromCart, totalPrice } =
+    useCartStore();
 
   const increaseQuantity = (id: string) => {
     const item = items.find((i) => i.id === id);
-    if (item) addToCart({ ...item, quantity: 1 });
+    if (item) {
+      addToCart({ ...item, quantity: 1 });
+    }
   };
 
   const decreaseQuantity = (id: string) => {
@@ -24,55 +29,21 @@ export function CartPage() {
     }
   };
 
-  const handlePlaceOrder = async () => {
-    try {
-      /* idk lägga user här? måste sparas på nått sätt.. */
-      const user = {
-        name: "",
-        phoneNumber: ""
-      };
-
-      const cartItems = items.map(item => ({
-        menuItem: item.title,
-        price: item.price,
-        quantity: item.quantity
-      }));
-
-      const orderBody = {
-        user,
-        cart: cartItems,
-        totalPrice: totalPrice(),
-        payment: "in-house" as const
-      };
-
-      const data = await createOrder(orderBody);
-
-      console.log("Order created:", data.orderId);
-      clearCart();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unknown error");
-    }
-  };
-  /* 
-    if (items.length === 0) {
-      return <p className="empty-cart">Your cart is empty</p>;
-    } */
-
   return (
     <div className="cart-layout">
       <div className="cart-logo">
-        <h1 className="logo">NA'CHO<br/> PROBLEM</h1>
+        <h1 className="logo">NA'CHO <br /> PROBLEM</h1>
       </div>
 
-      <Container>
-        <div className="cart-container">
+      <div className="cart-container">
+        <Container title="CART">
           {error && <p className="error-message">{error}</p>}
 
           {items.map((item) => (
             <div key={item.id} className="cart-item">
               <h3>{item.title}</h3>
 
-              <div className="cart-item-actions">
+              <div className="cart-add-remove">
                 <button onClick={() => decreaseQuantity(item.id)} className="qty-btn">-</button>
                 <span className="qty">{item.quantity}</span>
                 <button onClick={() => increaseQuantity(item.id)} className="qty-btn">+</button>
@@ -82,13 +53,15 @@ export function CartPage() {
           ))}
 
           <h2 className="cart-total">TOTAL {totalPrice()} KR</h2>
-
-          <button className="place-order-btn" onClick={handlePlaceOrder}>
-            Place Order
-          </button>
+        </Container>
+        <div className="cart-button-wrapper">
+          <Button
+            size="medium"
+            text="PLACE ORDER"
+            onClick={() => navigate("/payment")}
+          />
         </div>
-      </Container>
+      </div>
     </div>
-
   );
 }
