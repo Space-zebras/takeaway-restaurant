@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import { Container, FilterOrders } from "@app/base";
 import { AdminOrderItem } from "../children/admin-order-item/ui";
+import { useGetOrders } from "@app/core";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
-// temp
-import { useNavigate } from "react-router-dom";
-
 export function AdminOrdersPage() {
-  //temp
   const navigate = useNavigate();
 
-  const mockOrders = [
-    { orderNumber: "8627", status: "preparing" },
-    { orderNumber: "1444", status: "pending" },
-    { orderNumber: "7005", status: "preparing" },
-    { orderNumber: "9659", status: "cancelled" },
-    { orderNumber: "0407", status: "cancelled" },
-  ];
+  const { data, loading, error } = useGetOrders();
+
+  const orders = data ?? [];
 
   const [filter, setFilter] = useState("All");
 
   const filteredOrders =
     filter === "All"
-      ? mockOrders
-      : mockOrders.filter(
-          (o) => o.status.toLowerCase() === filter.toLowerCase()
-        );
+      ? orders
+      : orders.filter((o) => o.status.toLowerCase() === filter.toLowerCase());
+
+  if (loading) return <p>Loading orders...</p>;
+  if (error) return <p>Error loading orders: {error}</p>;
 
   return (
     <main className="adminOrdersPage">
@@ -34,14 +29,12 @@ export function AdminOrdersPage() {
 
         {filteredOrders.map((order) => (
           <AdminOrderItem
-            key={order.orderNumber}
-            orderNumber={order.orderNumber}
+            key={order.orderId}
+            orderId={order.orderId}
             status={order.status as any}
-            onApprove={() => console.log("Approve", order.orderNumber)}
-            //onDetails={() => console.log("Details", order.orderNumber)}
-
-            // temp - then restore previous line above once this is removed again
-            onDetails={() => navigate(`/admin/order/${order.orderNumber}`)}
+            // TEMP
+            onApprove={() => console.log("Approve", order.orderId)}
+            onDetails={() => navigate(`/admin/order/${order.orderId}`)}
           />
         ))}
       </Container>

@@ -1,0 +1,1 @@
+/* interface/typer, funktioner, koppla till api sen */
