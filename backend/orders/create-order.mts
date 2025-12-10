@@ -14,8 +14,8 @@ export interface UserInfo {
     phoneNumber: string
 }
 
-export interface Order {
-    orderId: string;
+export interface OrderBody {
+    // orderId: string;
     user: UserInfo;
     cart: CartItemBackend[];
     totalPrice: number;
@@ -87,7 +87,7 @@ export const handler = async (event: any) => {
                 }
             },
             payment: { S: body.payment },
-            status: { S: "pending" },
+            status: { S: "PENDING" },
             createdAt: { S: createdAt },
             modifiedAt: { S: createdAt }
 
@@ -98,7 +98,7 @@ export const handler = async (event: any) => {
 
         return responseHandler(200, {
             message: "Order created",
-            orderId
+            order
         })
 
     } catch (error: any) {

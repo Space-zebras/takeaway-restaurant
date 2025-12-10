@@ -3,7 +3,7 @@ import "./index.css";
 type OrderItemProps = {
   date: string;
   orderNumber: string;
-  status: "PENDING" | "PREPARING" | "COMPLETE";
+  status: "PENDING" | "PREPARING" | "COMPLETE" | "CANCELLED";
 };
 
 export function OrderItem({ date, orderNumber, status }: OrderItemProps) {
@@ -27,7 +27,10 @@ export function OrderItem({ date, orderNumber, status }: OrderItemProps) {
       </div>
 
       <div className="orderItem__rightCol">
-        <button className="orderItem__actionBtn">VIEW</button>
+        {/* Temporary link to order confirmation page */}
+        <a className="orderLink" href="/confirmation">
+          <button className="orderItem__actionBtn">VIEW</button>
+        </a>
       </div>
     </article>
   );

@@ -1,0 +1,33 @@
+.home-page{
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding: 2rem;
+}
+
+.click-container{
+    cursor: pointer;
+}
+
+.click-container:hover{
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+.home-page .button {
+    margin-left: 2rem;
+    height: 60px;
+}
+
+@media (max-width: 1000px) {
+    .home-page{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .home-page .best-sellers{
+        display: none;
+    }
+}

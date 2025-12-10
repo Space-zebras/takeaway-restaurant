@@ -1,20 +1,56 @@
-.menuContainer {
-  width: 100%;
-  max-width: 1100px;
-  background: #f7f1e3;
-  border-radius: 0 40px 40px 40px;
-  padding-bottom: 2rem;
+.container {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.menuContainer__banner {
-  height: 120px;
-  background: #3d5b36;
+.container--full {
+  width: 100%;
+  max-width: 90vw;
+  background: #f7f1e3;
+  border-radius: 0 40px 0 40px;
+  padding-bottom: 2rem;
+}
+
+.container--half {
+  width: 50vw;
+  height: auto;
+  background: #f7f1e3;
   border-radius: 0 40px 0 40px;
 }
 
-.menuContainer__inner {
+.container__banner {
+  height: 120px;
+  background: var(--color-button);
+  border-radius: 0 40px 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__title {
+  margin: 0;
+  color: #F7F1E3;
+  font-size: 45px;
+  font-family: "Bagel Fat One", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  line-height: 1;
+  background-color: inherit;
+}
+
+.container__inner {
   padding: 2rem 3rem;
-  background-color: var(--color-container);
+  background-color: #F7F1E3;
+}
+
+
+@media (max-width: 1000px){
+  .container--half {
+      width: 100%;
+      max-width: 90vw;
+      padding-bottom: 2rem;
+  }
 }

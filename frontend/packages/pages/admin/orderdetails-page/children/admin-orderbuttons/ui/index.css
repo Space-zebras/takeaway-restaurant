@@ -1,0 +1,18 @@
+.orderActions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.orderActions__btn {
+  padding: 0.8rem 1.5rem;
+  background: var(--color-button);
+  color: var(--color-container);
+  border: none;
+  border-radius: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: -4px 4px #442d22;
+}
