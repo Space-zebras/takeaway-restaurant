@@ -10,3 +10,4 @@ export { Footer } from "./footer";
 export { Form } from "./form";
 export { Login } from "./login";
 export { CartIcon } from "./cart-icon";
+export { AmountButtons } from "./amount-button";

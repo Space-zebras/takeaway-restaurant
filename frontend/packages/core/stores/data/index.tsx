@@ -1,31 +1,17 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-export type CartItem = {
-    id: string,
-    title: string,
-    price: number,
-    quantity: number
-}
-
-type CartState = {
-    items: CartItem[],
-    addToCart: (item: CartItem) => void,
-    removeFromCart: (id: string) => void,
-    clearCart: () => void,
-    totalPrice: () => number
-}
+import type { CartItem, CartState } from "@app/core";
 
 export const useCartStore = create<CartState>()(persist((set, get) => ({
     items: [],
     addToCart: (newItem: CartItem) => {
         set((state) => {
-            const exists = state.items.find((i: CartItem) => i.id === newItem.id);
+            const exists = state.items.find((i: CartItem) => i.title === newItem.title);
 
             if(exists) {
                 return {
                     items: state.items.map((item: CartItem) => 
-                        item.id === newItem.id
+                        item.title === newItem.title
                             ? {...item, quantity: item.quantity + newItem.quantity}
                             : item
                     )
@@ -34,25 +20,30 @@ export const useCartStore = create<CartState>()(persist((set, get) => ({
             return { items: [...state.items, newItem] }
         })
     },
-    removeFromCart: (id) => {
+    decreaseItem: (title: string) => {
         set((state) => ({
-            items: state.items.filter((i) => i.id !== id)
-        }))
+            items: state.items
+            .map((item) =>
+                item.title === title
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            )
+            .filter((item) => item.quantity > 0),
+
+        }));
     },
     clearCart: () => {
         set({ items: [] })
     },
+    
     totalPrice: () => {
-        return get().items.reduce(
-            (total, item) => total + item.price * item.quantity,
-            0
-        );
+        return get().items.reduce((total, item) => total + item.price * item.quantity, 0)
     },
 
-      totalQuantity: () => {
+    totalQuantity: () => {
         return get().items.reduce((total, item) => total + item.quantity, 0);
-      },
-    }),
+    },
+}),
     { name: "cart-storage" }
   )
 );
