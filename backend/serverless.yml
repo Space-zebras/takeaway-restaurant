@@ -75,12 +75,12 @@ functions:
           path: /orders/{orderId}
           method: get
           
-  # updateOrder:
-  #   handler: orders/update-order.mts
-  #   events:
-  #     - httpApi:
-  #         path: /orders/{id}
-  #         method: put
+  updateOrder:
+    handler: orders/update-order.handler
+    events:
+      - httpApi:
+          path: /orders/{orderId}
+          method: put
 
 resources:
   Resources:
