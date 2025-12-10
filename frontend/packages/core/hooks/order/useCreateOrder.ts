@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { OrderApi } from "packages/core/api/oders.api";
-import type { CreateOrderBody } from "packages/core/api/oders.api";
+import { OrderApi } from "packages/core/api/orders.api";
+import type { CreateOrderBody } from "packages/core/api/orders.api";
 
 export function useCreateOrder() {
     const [loading, setLoading] = useState(false);

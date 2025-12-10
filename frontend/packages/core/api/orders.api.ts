@@ -17,7 +17,7 @@ export interface Order {
   cart: CartItem[];
   totalPrice: number;
   payment: string;
-  status: string;
+  status: "PENDING" | "PREPARING" | "COMPLETE" | "CANCELLED";
   createdAt: string;
   modifiedAt: string;
 }
@@ -40,7 +40,7 @@ export const OrderApi = {
         http<ApiResponse<Order>>("/orders"),
 
     getOrderById: (id: string) =>
-        http<ApiResponse<Order>>(`/oders/${id}`),
+        http<ApiResponse<Order>>(`/orders/${id}`),
 
     createOrder: (body: CreateOrderBody) =>
         http<ApiResponse<Order>>("/orders", {
