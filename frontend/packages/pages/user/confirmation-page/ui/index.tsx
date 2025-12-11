@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./index.css";
-
 import { Container } from "@app/base";
 import { ReceiptContainer } from "../children/receipt-container";
 import { OrderNumber } from "../children/order-number";

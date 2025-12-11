@@ -5,6 +5,7 @@ type ReceiptItem = {
   name: string;
   quantity: number;
   price: number;
+  totalPrice: number;
 };
 
 type Props = {
@@ -13,7 +14,7 @@ type Props = {
 };
 
 export function ReceiptContainer({ orderNumber, items }: Props) {
-  // To work out the total. - Or we will take this from elsewhere??
+  // To work out the total.
   const total = items.reduce(
     (sum, item) => sum + item.quantity * item.price,
     0
