@@ -7,13 +7,15 @@ type OrderItemProps = {
 };
 
 export function OrderItem({ date, orderNumber, status }: OrderItemProps) {
+  const shortNumber = String(orderNumber).slice(0, 4);
+
   return (
     <article className="orderItem">
       <div className="orderItem__leftCol">
         <p className="orderItem__date">{date}</p>
         <p className="orderItem__order">
           <span className="orderItem__orderLabel">ORDER </span>
-          <span className="orderItem__orderNumber">{orderNumber}</span>
+          <span className="orderItem__orderNumber">{shortNumber}</span>
         </p>
       </div>
 
@@ -27,8 +29,7 @@ export function OrderItem({ date, orderNumber, status }: OrderItemProps) {
       </div>
 
       <div className="orderItem__rightCol">
-        {/* Temporary link to order confirmation page */}
-        <a className="orderLink" href="/confirmation">
+        <a className="orderLink" href={`/order/${orderNumber}`}>
           <button className="orderItem__actionBtn">VIEW</button>
         </a>
       </div>
