@@ -7,8 +7,9 @@ export { default as Tacos } from './assets/tacos.jpg';
 export { default as Burritos } from './assets/burritos.jpg';
 export { default as Nachos } from './assets/nachos.jpg';
 export { useGetOrders } from "./hooks/order/useGetOrders";
+export { useUpdateOrder } from "./hooks/order/useUpdateOrder"
 export { OrderApi } from "./api/orders.api";
-export type { Order } from "./api/orders.api"
 export type { MenuItem } from "./types";
 export type { CartItem, CartState } from "./types";
+export type { Order, UserInfo, CreateOrderBody, UpdateOrderBody } from "./types/order-types"
 export { useCartStore } from "./stores";

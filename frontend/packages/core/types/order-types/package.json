@@ -1,0 +1,4 @@
+{
+  "name": "@app/order-types",
+  "main": "./index.ts"
+}
