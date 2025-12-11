@@ -15,15 +15,7 @@ provider:
   role: ${env:IAM_ROLE}
 
   httpApi:
-    allowedOrigins:
-      - "*"
-    allowedHeaders:
-      - "*"
-    allowedMethods:
-      - GET
-      - POST
-      - PUT
-    maxAge: 600
+    cors: true
 
   environment:
     MENU_TABLE: ${env:MENU_TABLE}
