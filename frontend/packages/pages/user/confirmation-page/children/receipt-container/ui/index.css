@@ -32,6 +32,7 @@
   letter-spacing: 0.05rem;
   color: var(--color-button);
   margin: 0;
+  text-transform: uppercase;
 }
 
 .receiptContainer__items {
