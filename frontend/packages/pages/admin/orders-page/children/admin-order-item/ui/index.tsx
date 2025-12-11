@@ -31,12 +31,12 @@ export function AdminOrderItem({
       </div>
 
       <div className="adminOrderItem__actions">
-        {status.toUpperCase() === "PENDING" && (
+        {(status.toUpperCase() === "PENDING" || status.toUpperCase() === "PREPARING") && (
           <button
             className="adminOrderItem__btn adminOrderItem__btn--approve"
             onClick={onApprove}
           >
-            Approve Order
+            {status.toUpperCase() === "PENDING" ? "Approve Order" : "Complete Order"}
           </button>
         )}
 
