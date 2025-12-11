@@ -1,35 +1,7 @@
 import { http } from "./http";
+import type { Order, CreateOrderBody, UpdateOrderBody } from "@app/core";
 
-export interface CartItem {
-  menuItem: string;
-  price: number;
-  quantity: number;
-}
-
-export interface UserInfo {
-  name: string;
-  phoneNumber: string;
-}
-
-export interface Order {
-  orderId: string;
-  user: UserInfo;
-  cart: CartItem[];
-  totalPrice: number;
-  payment: string;
-  status: "PENDING" | "PREPARING" | "COMPLETE" | "CANCELLED";
-  createdAt: string;
-  modifiedAt: string;
-}
-
-export interface CreateOrderBody {
-  user: UserInfo;
-  cart: CartItem[];
-  totalPrice: number;
-  payment: "online" | "in-house";
-}
-
-export interface ApiResponse<T> {
+interface ApiResponse<T> {
   message?: string;
   order?: T;
   orders?: T[];
@@ -46,6 +18,11 @@ export const OrderApi = {
         http<ApiResponse<Order>>("/orders", {
             method: "POST",
             body: JSON.stringify(body)
-        })
+        }),
+  updateOrder: (id: string, body: UpdateOrderBody) => 
+    http<ApiResponse<Order>>(`/orders/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(body)
+    })
 
 }

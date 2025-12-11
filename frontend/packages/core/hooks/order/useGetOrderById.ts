@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { OrderApi } from "@app/core/api/orders.api";
-import type { Order } from "@app/core/api/orders.api";
+import type { Order } from "@app/core";
 
 export function useGetOrderById(id: string) {
   const [data, setData] = useState<Order | null>(null);
