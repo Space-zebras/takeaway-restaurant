@@ -1,60 +1,48 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Container, FilterMenu, MenuItemCard } from "@app/base";
+import { useMenu } from "@app/core/hooks/useMenu";
 import "./index.css";
 
-// Components
-import { Container, FilterMenu, MenuItemCard } from "@app/base";
+export function MenuPage() {
+  const navigate = useNavigate();
+  const { data } = useMenu();
 
-export const MenuPage: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState("mains");
+
+  const filteredItems =
+    selectedCategory === "all"
+      ? data
+      : data.filter((item) => item.category?.includes(selectedCategory));
+
   return (
     <main className="menuPage">
-      <Container title="Menu" variant="full">
-        {/* filter buttons */}
-        <FilterMenu />
+      <Container title="MENU" variant="full">
+        <FilterMenu
+          selected={selectedCategory}
+          onSelect={setSelectedCategory}
+        />
+
         <div className="menuGrid">
-          {/* temporary menu items */}
-          <MenuItemCard
-            image="https://onedishkitchen.com/wp-content/uploads/2022/02/nachos-one-dish-kitchen-square-2500.jpg"
-            title="Nachotallrik"
-            description="Ost, majchips, köttfärs"
-            price={120}
-          />
+          {filteredItems.map((item) => (
+            <MenuItemCard
+              key={item.menuItem}
+              image="/Users/adam/Documents/Folkuniversitetet/takeaway-restaurant-2/frontend/packages/core/assets/Logo.webp"
+              title={item.menuItem}
+              description={item.description}
+              price={item.price}
+            />
+          ))}
+        </div>
 
-          <MenuItemCard
-            image="https://onedishkitchen.com/wp-content/uploads/2022/02/nachos-one-dish-kitchen-square-2500.jpg"
-            title="Nachotallrik Veg"
-            description="Ost, majchips, bönor"
-            price={120}
-          />
-
-          <MenuItemCard
-            image="https://www.tamingtwins.com/wp-content/uploads/2023/05/image-51.jpeg"
-            title="Burritos"
-            description="Ost, majchips, bönor"
-            price={120}
-          />
-
-          <MenuItemCard
-            image="https://www.tamingtwins.com/wp-content/uploads/2023/05/image-51.jpeg"
-            title="Burritos Veg"
-            description="Ost, majchips, bönor"
-            price={120}
-          />
-
-          <MenuItemCard
-            image="https://cookingformysoul.com/wp-content/uploads/2024/04/feat-carne-asada-tacos-min.jpg"
-            title="Tacos"
-            description="Ost, majchips, bönor"
-            price={120}
-          />
-
-          <MenuItemCard
-            image="https://cookingformysoul.com/wp-content/uploads/2024/04/feat-carne-asada-tacos-min.jpg"
-            title="Tacos Veg"
-            description="Ost, majchips, bönor"
-            price={120}
+        <div className="cart-button">
+          <Button
+            size="medium"
+            text="Go to cart"
+            onClick={() => navigate("/cart")}
           />
         </div>
       </Container>
     </main>
   );
-};
+}

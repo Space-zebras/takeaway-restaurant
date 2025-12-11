@@ -1,19 +1,24 @@
 import "./index.css";
 
-export function FilterOrders() {
-  // Temporary
-  const categories = ["All", "Active", "Completed"];
+type Props = {
+  active: string;
+  onChange: (value: string) => void;
+};
+
+export function FilterOrders({ active, onChange }: Props) {
+  const categories = ["All", "Pending", "Preparing", "Complete", "Cancelled"];
 
   return (
     <div className="filterOrders">
-      {categories.map((cat, index) => (
+      {categories.map((cat) => (
         <button
           key={cat}
           className={
-            index === 0
+            active === cat
               ? "filterOrders__button filterOrders__button--active"
               : "filterOrders__button"
           }
+          onClick={() => onChange(cat)}
         >
           {cat}
         </button>

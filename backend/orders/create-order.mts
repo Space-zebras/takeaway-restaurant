@@ -3,7 +3,7 @@ import { PutItemCommand, GetItemCommand, UpdateItemCommand } from "@aws-sdk/clie
 import { responseHandler } from "../services/response-handler.mjs";
 import { v4 as uuid } from "uuid";
 
-export interface CartItemBackend {
+export interface CartItem {
     menuItem: string,
     price: number,
     quantity: number
@@ -15,14 +15,10 @@ export interface UserInfo {
 }
 
 export interface OrderBody {
-    // orderId: string;
     user: UserInfo;
-    cart: CartItemBackend[];
+    cart: CartItem[];
     totalPrice: number;
     payment: "online" | "in-house";
-    // status: "pending" | "completed" | "active" | "canceled";
-    // createdAt: string;
-    // modifiedAt: string;
 }
 
 export const handler = async (event: any) => {
@@ -36,34 +32,8 @@ export const handler = async (event: any) => {
 
 
         const createdAt = new Date().toISOString();
-        const orderId = uuid();
+        const orderId = uuid().split("-")[0];
         console.log(JSON.stringify(body, null, 2));
-
-
-        // for (const cartItem of body.cart) {
-        //     const menuItemResp = await client.send(new GetItemCommand({
-        //         TableName: "menu",
-        //         Key: { PK: { S: cartItem.menuItem } }
-        //     }));
-
-        //     if (!menuItemResp.Item) {
-        //         return responseHandler(404, { error: `MenuItem ${cartItem.menuItem} not found` });
-        //     }
-
-        //     const ingredients = menuItemResp.Item.ingredients?.M ?? {};
-
-        //     for (const [ingredient, value] of Object.entries(ingredients)) {
-        //         const amountNeeded = Number(value.N) * cartItem.quantity;
-
-        //         await client.send(new UpdateItemCommand({
-        //             TableName: "stock",
-        //             Key: { PK: { S: ingredient } },
-        //             UpdateExpression: "SET quantity = quantity - :used",
-        //             ConditionExpression: "quantity >= :used",
-        //             ExpressionAttributeValues: { ":used": { N: String(amountNeeded) } }
-        //         }));
-        //     }
-        // }
 
         const command = new PutItemCommand({
             TableName,
@@ -71,7 +41,7 @@ export const handler = async (event: any) => {
             PK: { S: "ORDER" },
             SK: { S: orderId },
             cart: {
-                L: body.cart.map((item: CartItemBackend) => ({
+                L: body.cart.map((item: CartItem) => ({
                     M: {
                         menuItem: { S: item.menuItem},
                         quantity: { N: String(item.quantity) },
@@ -87,22 +57,34 @@ export const handler = async (event: any) => {
                 }
             },
             payment: { S: body.payment },
-            status: { S: "pending" },
+            status: { S: "PENDING" },
             createdAt: { S: createdAt },
             modifiedAt: { S: createdAt }
 
             }
-        })
+        });
+
+        const orderData = {
+            PK: "ORDER",
+            SK: orderId,
+            cart: body.cart,
+            totalPrice: body.totalPrice,
+            user: body.user,
+            payment: body.payment,
+            status: "PENDING",
+            createdAt,
+            modifiedAt: createdAt
+        };
 
         const order = await client.send(command)
 
         return responseHandler(200, {
             message: "Order created",
-            orderId
+            order: orderData
         })
 
     } catch (error: any) {
         console.error(error);
-        return responseHandler(500, { message: error.message, stack: error.stack });
+        return responseHandler(500, { message: error.message });
     }
 }

@@ -1,0 +1,4 @@
+{
+  "name": "@app/amount-button",
+  "main": "./index.ts"
+}

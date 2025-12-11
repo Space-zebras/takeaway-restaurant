@@ -1,0 +1,25 @@
+.amountButtonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.amountButton {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: var(--color-text) solid 1px;
+  border-radius: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.amountButton__number {
+  background: var(--color-container);
+  font-size: 1rem;
+  font-weight: 400;
+  width: 1.5rem;
+  text-align: center;
+}

@@ -3,7 +3,7 @@ import "./index.css";
 type OrderItemProps = {
   date: string;
   orderNumber: string;
-  status: "PENDING" | "PREPARING" | "COMPLETE";
+  status: "PENDING" | "PREPARING" | "COMPLETE" | "CANCELLED";
 };
 
 export function OrderItem({ date, orderNumber, status }: OrderItemProps) {

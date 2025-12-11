@@ -36,7 +36,7 @@ export const handler = async (event: any) => {
             },
             cart: result.Item.cart.L?.map((c: any) => ({
                 menuItem: c.M.menuItem.S,
-                qquantity: Number(c.M.quantity.N),
+                quantity: Number(c.M.quantity.N),
                 price: Number(c.M.price.N)
             }))
         }
