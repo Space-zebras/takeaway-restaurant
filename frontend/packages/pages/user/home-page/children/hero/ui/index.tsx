@@ -1,12 +1,14 @@
-import { Logo } from "@app/core";
+import { Button } from "@app/base"
+import hero from "./assets/hero.png"
+import { useNavigate } from "react-router-dom"
 import './index.css'
 
 export function Hero () {
+    const navigate = useNavigate();
     return(
        <section className="hero">
-            <p className="hero__text">hungry and tired after work?</p>
-            <span className="hero__logo"><img src={Logo} alt="Logo" className="hero__img"/></span>
-            <h1 className="hero__heading">na'cho problem</h1>
+            <img src={hero} alt="hero-logo" />
+            <Button size="small" onClick={() => navigate("/menu")} text="order here!" />
        </section> 
     )
 }

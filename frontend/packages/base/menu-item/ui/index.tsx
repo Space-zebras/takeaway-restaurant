@@ -3,12 +3,15 @@ import { type MenuItem } from "@app/core/types";
 import { AmountButtons } from "@app/base";
 import "./index.css";
 
-export function MenuItemCard({
-  image,
-  title,
-  description,
-  price,
-}: MenuItem) {
+interface MenuItemCardProps extends MenuItem {
+  showAmountButtons?: boolean
+}
+
+export function MenuItemCard(props: MenuItemCardProps) {
+
+  const { image, title, description, price } = props
+  const showAmountButtons = props.showAmountButtons ?? true;
+
   const addToCart = useCartStore((s) => s.addToCart);
   const decreaseItem = useCartStore((s) => s.decreaseItem);
 
@@ -30,13 +33,13 @@ export function MenuItemCard({
         <div className="menuItem__rightCol">
           <p className="menuItem__price">{price} kr</p>
 
-          <AmountButtons
+          {showAmountButtons && (<AmountButtons
             value={quantity}
             onDecrement={() => decreaseItem(title)}
             onIncrement={() =>
               addToCart({ title, price, quantity: 1 })
             }
-          />
+          />)}
         </div>
       </div>
     </article>
