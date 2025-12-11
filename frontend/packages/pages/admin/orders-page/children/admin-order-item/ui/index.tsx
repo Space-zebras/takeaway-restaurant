@@ -31,7 +31,7 @@ export function AdminOrderItem({
       </div>
 
       <div className="adminOrderItem__actions">
-        {status === "pending" && (
+        {status.toUpperCase() === "PENDING" && (
           <button
             className="adminOrderItem__btn adminOrderItem__btn--approve"
             onClick={onApprove}
