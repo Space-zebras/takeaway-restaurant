@@ -1,14 +1,14 @@
 .home-page {
-    margin-top: 10%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     align-items: center;
     padding: 2rem;
-    min-height: 400px;   /* hindrar hero från att bli för liten */
+    max-width: 1200px;
+    margin: 6% auto;
 }
 
-.hero-section{
+.hero-section, .best-sellers{
     width: 100%;
 }
 
@@ -22,26 +22,26 @@
 }
 
 .home-page .button {
-    margin-left: 2rem;
+    margin-top: 2rem;
     height: 60px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
     .home-page{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
+        grid-template-columns: 1fr;
+        width: 100%;
+        justify-items: center;
+    }
+    .hero-section, .best-sellers{
+        width: 500px;
     }
 }
 
-@media (max-width: 700px) {
-    .hero {
-        width: 100%;
-    }
-
-    .best-sellers {
+@media (max-width: 550px) {
+    .best-sellers{
         display: none;
+    }
+    .hero-section{
+    width: 100%;
     }
 }

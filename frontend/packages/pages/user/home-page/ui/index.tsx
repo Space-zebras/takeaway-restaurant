@@ -15,9 +15,11 @@ export const HomePage = () => {
           <div className="click-container" onClick={() => navigate("/menu")}>
             <MenuItemCard 
               image="https://onedishkitchen.com/wp-content/uploads/2022/02/nachos-one-dish-kitchen-square-2500.jpg"
-              title="Nachotallrik"
-              description="Ost, majchips, köttfärs"
-              price={120}
+              title="Beef Bandito Burrito"
+              description="Savory meat wrapped in a tortilla with a kick of salsa."
+              ingredients="tortilla, beef, salsa "
+              price={140}
+              showAmountButtons={false}
             />
           </div>
         </Container>
