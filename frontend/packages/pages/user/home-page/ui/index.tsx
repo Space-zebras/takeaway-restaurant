@@ -11,7 +11,7 @@ export const HomePage = () => {
         <Hero />
       </section>
       <section className="best-sellers">
-        <Container title="best sellers">
+        <Container title="this weeks pick">
           <div className="click-container" onClick={() => navigate("/menu")}>
             <MenuItemCard 
               image="https://onedishkitchen.com/wp-content/uploads/2022/02/nachos-one-dish-kitchen-square-2500.jpg"
