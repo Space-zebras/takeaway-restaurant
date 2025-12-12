@@ -7,7 +7,7 @@
 
 .container--full {
   width: 100%;
-  max-width: 700px;
+  max-width: 1200px;
   margin: 0 auto;
   background: var(--color-container);
   border-radius: 0 40px 0 40px;
