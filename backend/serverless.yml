@@ -16,14 +16,6 @@ provider:
 
   httpApi:
     cors: true
-      # allowOrigins:
-      #   - "*"
-      # allowHeaders:
-      #   - "*"
-      # allowMethods:
-      #   - GET
-      #   - POST
-      # maxAge: 600
 
   environment:
     MENU_TABLE: ${env:MENU_TABLE}
@@ -84,12 +76,12 @@ functions:
           path: /admin/login
           method: post
 
-  # updateOrder:
-  #   handler: orders/update-order.mts
-  #   events:
-  #     - httpApi:
-  #         path: /orders/{id}
-  #         method: put
+  updateOrder:
+    handler: orders/update-order.handler
+    events:
+      - httpApi:
+          path: /orders/{orderId}
+          method: put
 
 resources:
   Resources:

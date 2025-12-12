@@ -5,6 +5,7 @@
   border: 1px solid var(--color-text);
   padding: 1rem;
   margin-bottom: 1rem;
+  container-type: inline-size;
 }
 
 .menuItem__image {
@@ -61,44 +62,11 @@
   font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 0.03rem;
+  white-space: nowrap;
 }
 
-.menuItem__qty {
-  background: var(--color-container);
-  font-family: var(--font-anton);
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.03rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.menuItem__qtyBtn {
-  background: var(--color-container);
-  width: 32px;
-  height: 32px;
-  color: var(--color-text);
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menuItem__qtyBtn svg {
-  background: var(--color-container);
-  width: 28px;
-  height: 28px;
-  stroke: var(--color-text);
-}
-
-.menuItem__qtyNumber {
-  background: var(--color-container);
-  font-size: 1rem;
-  font-weight: 400;
-  width: 1.5rem;
-  text-align: center;
+@container (max-width: 400px) {
+  .menuItem__desc {
+      display: none;
+  }
 }

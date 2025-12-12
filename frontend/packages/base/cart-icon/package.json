@@ -1,0 +1,4 @@
+{
+  "name": "@app/cart-icon",
+  "main": "./index.ts"
+}

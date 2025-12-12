@@ -1,31 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Container } from "@app/base";
+import { Button, Container, MenuItemCard } from "@app/base";
 import { useCartStore } from "@app/core";
 import "./index.css";
 
 export function CartPage() {
   const navigate = useNavigate();
-
-  const { items, addToCart, removeFromCart, totalPrice } =
-    useCartStore();
-
-  const increaseQuantity = (id: string) => {
-    const item = items.find((i) => i.id === id);
-    if (item) {
-      addToCart({ ...item, quantity: 1 });
-    }
-  };
-
-  const decreaseQuantity = (id: string) => {
-    const item = items.find((i) => i.id === id);
-    if (!item) return;
-
-    if (item.quantity > 1) {
-      addToCart({ ...item, quantity: -1 });
-    } else {
-      removeFromCart(id);
-    }
-  };
+  const { items, totalPrice } = useCartStore();
 
   return (
     <div className="cart-layout">
@@ -40,20 +20,18 @@ export function CartPage() {
             <p className="empty-cart">Your cart is empty</p>
           ) : (
             <>
-              {items.map((item) => (
-                <div key={item.id} className="cart-item">
-                  <h3>{item.title}</h3>
-
-                  <div className="cart-add-remove">
-                    <button onClick={() => decreaseQuantity(item.id)} className="qty-btn">-</button>
-                    <span className="qty">{item.quantity}</span>
-                    <button onClick={() => increaseQuantity(item.id)} className="qty-btn">+</button>
-                    <span className="price">{item.price} kr</span>
-                  </div>
-                </div>
+              {items.map(item => (
+                <MenuItemCard
+                  key={item.id}
+  
+                  {...item}
+                  showDescription={false}
+                  showImage={false}
+                  showAmountButtons={true}
+                />
               ))}
 
-              <h2 className="cart-total">TOTAL {totalPrice()} KR</h2>
+              <h2 className="cart-total"> {totalPrice()} KR</h2>
             </>
           )}
         </Container>

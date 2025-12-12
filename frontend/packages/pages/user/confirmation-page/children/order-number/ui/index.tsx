@@ -6,5 +6,7 @@ type OrderNumberProps = {
 };
 
 export const OrderNumber: React.FC<OrderNumberProps> = ({ orderNumber }) => {
-  return <div className="orderNumberBubble">{orderNumber}</div>;
+  const shortNumber = String(orderNumber).slice(0, 4);
+
+  return <div className="orderNumberBubble">{shortNumber}</div>;
 };

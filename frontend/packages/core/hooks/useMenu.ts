@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { MenuApi } from "../api/menu.api";
-import type { MenuItem } from "../api/menu.api";
+import { MenuApi, type MenuItem } from "../api/menu.api";
 
 export function useMenu() {
     const [data, setData] = useState<MenuItem[]>([]);
@@ -9,9 +8,9 @@ export function useMenu() {
 
     useEffect(() => {
         MenuApi.getMenu()
-            .then(res => setData(res.menu))
+            .then(res => setData(res))
             .catch(err => setError(err.message))
-            .finally(() => setLoading(false))
+            .finally(() => setLoading(false));
     }, []);
 
     return { data, loading, error };

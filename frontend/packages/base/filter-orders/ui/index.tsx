@@ -6,7 +6,7 @@ type Props = {
 };
 
 export function FilterOrders({ active, onChange }: Props) {
-  const categories = ["All", "Pending", "Preparing", "Completed", "Cancelled"];
+  const categories = ["All", "Pending", "Preparing", "Complete", "Cancelled"];
 
   return (
     <div className="filterOrders">

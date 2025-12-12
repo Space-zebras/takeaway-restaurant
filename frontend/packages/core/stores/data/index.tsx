@@ -2,51 +2,63 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export type CartItem = {
-    id: string,
-    title: string,
-    price: number,
-    quantity: number
-}
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+};
 
-type CartState = {
-    items: CartItem[],
-    addToCart: (item: CartItem) => void,
-    removeFromCart: (id: string) => void,
-    clearCart: () => void,
-    totalPrice: () => number
+export interface CartState {
+    items: CartItem[];
+    addToCart: (newItem: CartItem) => void;
+    decreaseItem: (id: string) => void;
+    clearCart: () => void;
+    totalPrice: () => number;
+    totalQuantity: () => number;
 }
 
 export const useCartStore = create<CartState>()(persist((set, get) => ({
     items: [],
     addToCart: (newItem: CartItem) => {
-        set((state) => {
-            const exists = state.items.find((i: CartItem) => i.id === newItem.id);
+      set((state) => {
+        const exists = state.items.find((i) => i.id === newItem.id);
 
-            if(exists) {
-                return {
-                    items: state.items.map((item: CartItem) => 
-                        item.id === newItem.id
-                            ? {...item, quantity: item.quantity + newItem.quantity}
-                            : item
-                    )
-                };
-            }
-            return { items: [...state.items, newItem] }
-        })
+        if (exists) {
+          const updatedItems = state.items.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + newItem.quantity }
+              : item
+          );
+          // console.log("Cart", updatedItems);
+          return { items: updatedItems };
+        }
+        // console.log("Updated cart:", [...state.items, newItem]);
+        return { items: [...state.items, newItem] };
+      });
     },
-    removeFromCart: (id) => {
-        set((state) => ({
-            items: state.items.filter((i) => i.id !== id)
-        }))
+    decreaseItem: (id: string) => {
+      set((state) => {
+        const updatedItems = state.items
+          .map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          )
+          .filter((item) => item.quantity > 0);
+
+        console.log("Decreased item quantity:", id);
+        console.log("Updated cart:", updatedItems);
+
+        return { items: updatedItems };
+      });
     },
     clearCart: () => {
-        set({ items: [] })
+      console.log("Cart cleared");
+      set({ items: [] });
     },
-    totalPrice: () => {
-    return get().items.reduce((total, item) => total + item.price * item.quantity, 0)
-},
-}),
- {name: "cart-storage" }
-))
-
-
+    totalPrice: () =>
+      get().items.reduce((total, item) => total + item.price * item.quantity, 0),
+    totalQuantity: () =>
+      get().items.reduce((total, item) => total + item.quantity, 0),
+  }),
+  { name: "cart-storage" }
+));

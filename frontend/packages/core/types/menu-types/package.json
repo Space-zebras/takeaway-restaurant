@@ -1,0 +1,4 @@
+{
+  "name": "@app/menu-types",
+  "main": "./index.ts"
+}

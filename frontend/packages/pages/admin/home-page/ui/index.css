@@ -1,0 +1,59 @@
+.adminHomePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  padding: 4rem 6rem;
+  min-height: 100vh;
+  background: var(--color-background-red);
+}
+
+.adminHomePage__titleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.adminHomePage__title {
+  font-family: var(--font-bagel);
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--color-container);
+  margin: 0;
+}
+
+.adminHomePage__subtitle {
+  font-family: var(--font-bagel);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-container);
+  margin: 0;
+  margin-left: 0.3rem;
+}
+
+.adminHomePage__buttonColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .adminHomePage {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .adminHomePage__titleBlock {
+    align-items: center;
+  }
+
+  .adminHomePage__buttonColumn {
+    width: 100%;
+    align-items: center;
+  }
+}

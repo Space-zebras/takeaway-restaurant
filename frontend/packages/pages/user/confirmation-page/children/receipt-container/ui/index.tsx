@@ -5,6 +5,7 @@ type ReceiptItem = {
   name: string;
   quantity: number;
   price: number;
+  totalPrice: number;
 };
 
 type Props = {
@@ -13,17 +14,19 @@ type Props = {
 };
 
 export function ReceiptContainer({ orderNumber, items }: Props) {
-  // To work out the total. - Or we will take this from elsewhere??
+  // To work out the total.
   const total = items.reduce(
     (sum, item) => sum + item.quantity * item.price,
     0
   );
 
+  const shortNumber = String(orderNumber).slice(0, 4);
+
   return (
     <div className="receiptContainer">
       <div className="receiptContainer__header">
         <h2 className="receiptContainer__label">RECEIPT</h2>
-        <h2 className="receiptContainer__orderNumber">NR. {orderNumber}</h2>
+        <h2 className="receiptContainer__orderNumber">Order {shortNumber}</h2>
       </div>
 
       {/* ITtems */}

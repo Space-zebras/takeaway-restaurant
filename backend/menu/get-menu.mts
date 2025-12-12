@@ -9,10 +9,12 @@ export const handler = async () => {
     const data = await client.send(new ScanCommand({ TableName }));
 
     const menu = (data.Items || []).map((it) => ({
-      menuItem: it.menuItem?.S || "",
-      category: it.category?.SS || "",
+      id: it.id?.S,
+      name: it.menuItem?.S || "",
+      category: it.category?.SS || [],
       description: it.description?.S || "",
-      ingredients: it.ingredients?.M || "",
+      ingredients: it.ingredients?.M || {},
+      image: it.imageUrl?.S || "",
       price: it.price ? Number(it.price.N) : 0,
     }));
 
