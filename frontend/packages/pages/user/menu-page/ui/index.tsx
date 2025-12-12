@@ -17,22 +17,27 @@ export function MenuPage() {
 
   return (
     <main className="menuPage">
-      <Container title="MENU" variant="full">
+      <Container title="menu" variant="full">
         <FilterMenu
           selected={selectedCategory}
           onSelect={setSelectedCategory}
         />
 
         <div className="menuGrid">
-          {filteredItems.map((item) => (
-            <MenuItemCard
-              key={item.menuItem}
-              image="/Users/adam/Documents/Folkuniversitetet/takeaway-restaurant-2/frontend/packages/core/assets/Logo.webp"
-              title={item.menuItem}
-              description={item.description}
-              price={item.price}
-            />
-          ))}
+          {filteredItems.map((item) => {
+            return (
+              <MenuItemCard
+                  key={item.id}
+                  id={item.id}
+                  menuItem={item.name}
+                  description={item.description}
+                  price={item.price}
+                  image={item.image}
+                  ingredients={item.ingredients} 
+                  category={[]}              
+              />
+            );
+          })}
         </div>
 
         <div className="cart-button">
