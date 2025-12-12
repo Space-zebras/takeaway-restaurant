@@ -1,8 +1,8 @@
-export type MenuItem = {
-//   id: string;  
-  image: string;
-  title: string;
-  description: string;
-  ingredients: string;
-  price: number;
-};
+// export interface MenuItem {
+//   id: string;
+//   name: string;
+//   image: string;
+//   description: string;
+//   ingredients: string;
+//   price: number;
+// };

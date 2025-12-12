@@ -9,7 +9,7 @@ export { default as Nachos } from './assets/nachos.jpg';
 export { useGetOrders } from "./hooks/order/useGetOrders";
 export { useUpdateOrder } from "./hooks/order/useUpdateOrder"
 export { OrderApi } from "./api/orders.api";
-export type { MenuItem } from "./types";
-export type { CartItem, CartState } from "./types";
+export type { MenuItem } from "./api/menu.api";
+export { MenuApi } from "./api/menu.api";
 export type { Order, UserInfo, CreateOrderBody, UpdateOrderBody } from "./types/order-types"
-export { useCartStore } from "./stores";
+export { useCartStore, type CartItem } from "./stores";
