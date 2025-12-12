@@ -1,10 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { MenuItem } from "packages/core/api/menu.api";
 
-export interface CartItem extends MenuItem {
-    quantity: number;
-}
+export type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+};
 
 export interface CartState {
     items: CartItem[];
