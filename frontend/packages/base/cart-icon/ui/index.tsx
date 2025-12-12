@@ -3,7 +3,7 @@ import { useCartStore } from "@app/core/stores";
 import "./index.css";
 
 type CartIconProps = {
-  variant?: "desktop" | "mobile"; // default desktop
+  variant?: "desktop" | "mobile";
 };
 
 export function CartIcon({ variant = "desktop" }: CartIconProps) {
