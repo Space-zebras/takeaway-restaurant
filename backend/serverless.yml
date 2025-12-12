@@ -11,7 +11,7 @@ provider:
   name: aws
   runtime: nodejs20.x
   region: eu-north-1
-  profile: ${env:PROFILE}
+  #profile: ${env:PROFILE}
   role: ${env:IAM_ROLE}
 
   httpApi:
