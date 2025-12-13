@@ -34,10 +34,14 @@ const responses: Record<number, Response> = {
   },
 };
 
-export const responseHandler = (status: number, data?: Record<string, unknown>) => {
+export const responseHandler = (
+  status: number, 
+  data?: Record<string, unknown>,
+  headers?: Record<string, string> ) => {
   const baseResponse = responses[status] || responses[500];
+
   return {
-    statusCode: baseResponse.status,
+    statusCode: baseResponse.status, headers,
     body: JSON.stringify({ ...baseResponse.body, ...(data || {}) }),
   };
 };
