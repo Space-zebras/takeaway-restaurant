@@ -21,8 +21,8 @@ provider:
     MENU_TABLE: ${env:MENU_TABLE}
     STOCK_TABLE: ${env:STOCK_TABLE}
     ORDERS_TABLE: ${env:ORDERS_TABLE}
-    ADMIN_TABLE: admin
-    JWT_SECRET: jwtokensecretnacho
+    ADMIN_TABLE: ${env:ADMIN_TABLE}
+    JWT_SECRET: ${env:JWT_SECRET}
 
 build:
   esbuild:
