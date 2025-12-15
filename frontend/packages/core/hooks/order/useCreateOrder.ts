@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { OrderApi } from "packages/core/api/orders.api";
-import type { CreateOrderBody, Order } from "packages/core/api/orders.api";
+import { OrderApi } from "@app/core";
+import type { CreateOrderBody, Order } from "@app/core";
 
 export function useCreateOrder() {
   const [loading, setLoading] = useState(false);
@@ -16,6 +16,7 @@ export function useCreateOrder() {
 
       if (res.order) {
         setOrder(res.order);
+        return res.order; 
       } else {
         setError("Order was created, but no order data was returned.");
       }

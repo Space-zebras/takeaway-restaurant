@@ -8,6 +8,7 @@ export { default as Burritos } from './assets/burritos.jpg';
 export { default as Nachos } from './assets/nachos.jpg';
 export { useGetOrders } from "./hooks/order/useGetOrders";
 export { useUpdateOrder } from "./hooks/order/useUpdateOrder"
+export { useCreateOrder } from "./hooks/order/useCreateOrder"
 export { OrderApi } from "./api/orders.api";
 export type { MenuItem } from "./api/menu.api";
 export { MenuApi } from "./api/menu.api";
