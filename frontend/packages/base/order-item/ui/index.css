@@ -95,7 +95,24 @@
   opacity: 0.9;
 }
 
-/* Temp artificial link to order confirmation */
 .orderLink {
   background: var(--color-container);
+}
+
+@media (max-width: 600px) {
+  .orderItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .orderItem__middleCol {
+    margin: 0;
+  }
+
+  .orderItem__rightCol {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
