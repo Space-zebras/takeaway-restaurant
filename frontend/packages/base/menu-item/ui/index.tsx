@@ -13,7 +13,7 @@ export function MenuItemCard(props: MenuItemCardProps) {
   const {
       id,
       image,
-      menuItem,
+      name,
       description,
       price,
       showDescription = true,
@@ -28,16 +28,16 @@ export function MenuItemCard(props: MenuItemCardProps) {
     (s) => s.items.find((item) => item.id === id)?.quantity || 0
   );
 
-  const handleIncrement = () => addToCart({ id, menuItem, price, image, quantity: 1 });
+  const handleIncrement = () => addToCart({ id, name, price, image, quantity: 1 });
   const handleDecrement = () => decreaseItem(id);
 
   return (
     <article className="menuItem">
-      {showImage && image && <img className="menuItem__image" src={image} alt={menuItem} />}
+      {showImage && image && <img className="menuItem__image" src={image} alt={name} />}
 
       <div className="menuItem__content">
         <div className="menuItem__leftCol">
-          <h4 className="menuItem__title">{menuItem}</h4>
+          <h4 className="menuItem__title">{name}</h4>
           {showDescription && <p className="menuItem__desc">{description}</p>}
         </div>
 

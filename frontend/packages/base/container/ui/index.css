@@ -7,8 +7,9 @@
 
 .container--full {
   width: 100%;
-  max-width: 90vw;
-  background: #f7f1e3;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--color-container);
   border-radius: 0 40px 0 40px;
   padding-bottom: 2rem;
 }
@@ -16,7 +17,7 @@
 .container--half {
   width: 50vw;
   height: auto;
-  background: #f7f1e3;
+  background: var(--color-container);
   border-radius: 0 40px 0 40px;
 }
 
@@ -31,7 +32,7 @@
 
 .container__title {
   margin: 0;
-  color: #F7F1E3;
+  color: var(--color-container);
   font-size: 45px;
   font-family: "Bagel Fat One", sans-serif;
   font-weight: 400;
@@ -43,14 +44,13 @@
 
 .container__inner {
   padding: 2rem 3rem;
-  background-color: #F7F1E3;
+  background-color: var(--color-container);
 }
 
-
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
   .container--half {
-      width: 100%;
-      max-width: 90vw;
-      padding-bottom: 2rem;
+    width: 100%;
+    max-width: 90vw;
+    padding-bottom: 2rem;
   }
 }

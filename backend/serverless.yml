@@ -11,7 +11,7 @@ provider:
   name: aws
   runtime: nodejs20.x
   region: eu-north-1
-  profile: ${env:PROFILE}
+  #profile: ${env:PROFILE}
   role: ${env:IAM_ROLE}
 
   httpApi:
@@ -21,6 +21,8 @@ provider:
     MENU_TABLE: ${env:MENU_TABLE}
     STOCK_TABLE: ${env:STOCK_TABLE}
     ORDERS_TABLE: ${env:ORDERS_TABLE}
+    ADMIN_TABLE: ${env:ADMIN_TABLE}
+    JWT_SECRET: ${env:JWT_SECRET}
 
 build:
   esbuild:
@@ -66,7 +68,14 @@ functions:
       - httpApi:
           path: /orders/{orderId}
           method: get
-          
+
+  adminLogin:
+    handler: admin/login.handler
+    events:
+      - httpApi:
+          path: /admin/login
+          method: post
+
   updateOrder:
     handler: orders/update-order.handler
     events:
@@ -91,6 +100,19 @@ resources:
             KeyType: HASH
           - AttributeName: SK
             KeyType: RANGE
+
+    AdminTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${env:ADMIN_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+
         # GlobalSecondaryIndexes:
           # - IndexName: entityIndex
           #   KeySchema:

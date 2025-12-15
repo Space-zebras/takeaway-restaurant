@@ -2,7 +2,7 @@ export const API_BASE = import.meta.env.VITE_API_BASE;
 
 export type MenuItem = {
     id: string,
-    menuItem: string,
+    name: string,
     category: string[],
     ingredients: Record<string, number>,
     description: string,

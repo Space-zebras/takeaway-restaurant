@@ -29,7 +29,7 @@ export function MenuPage() {
               <MenuItemCard
                   key={item.id}
                   id={item.id}
-                  menuItem={item.name}
+                  name={item.name}
                   description={item.description}
                   price={item.price}
                   image={item.image}
