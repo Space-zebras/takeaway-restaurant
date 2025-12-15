@@ -1,4 +1,4 @@
-import { adminHttp } from "./adminhttp.ts";
+import { adminHttp } from "./adminHttp.ts";
 
 export interface AdminLoginRequest {
   adminId: string;
