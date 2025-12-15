@@ -1,8 +1,18 @@
-// export interface MenuItem {
-//   id: string;
-//   name: string;
-//   image: string;
-//   description: string;
-//   ingredients: string;
-//   price: number;
-// };
+export type MenuItem = {
+    id: string,
+    name: string,
+    category: string[],
+    ingredients: Record<string, number>,
+    description: string,
+    price: number, 
+    image: string,
+}
+
+export type UpdateMenuItemBody = Partial<{
+    name: string,
+    category: string[],
+    ingredients: Record<string, number>,
+    description: string,
+    price: number, 
+    image: string,
+}>
