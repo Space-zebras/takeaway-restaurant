@@ -33,7 +33,7 @@ export function PaymentPage() {
     }
 
     const cart = items.map(item => ({
-      menuItem: item.menuItem,
+      menuItem: item.name,
       quantity: item.quantity,
       price: item.price
     }));
@@ -48,9 +48,9 @@ export function PaymentPage() {
       payment: paymentType
     };
 
-    const createdOrder = await create(orderBody);
+    const createdOrder = await create(orderBody) as { orderId?: string } | null | undefined;
 
-    if (createdOrder?.orderId) {
+    if (createdOrder && createdOrder.orderId) {
       navigate(`/order/${createdOrder.orderId}`);
     } else {
       console.error("Order creation failed or missing orderId");
