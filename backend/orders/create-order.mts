@@ -80,6 +80,7 @@ export const handler = async (event: any) => {
 
         return responseHandler(200, {
             message: "Order created",
+            orderId,
             order: orderData
         })
 
