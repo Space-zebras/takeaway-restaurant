@@ -1,0 +1,94 @@
+.adminEditModal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.adminEditModal {
+  width: 100%;
+  max-width: 520px;
+  background: var(--color-container);
+  border-radius: 0 40px 0 40px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+.adminEditModal__header {
+  background: var(--color-button);
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.adminEditModal__title {
+  margin: 0;
+  color: var(--color-container);
+  font-family: var(--font-bagel);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.adminEditModal__close {
+  border: none;
+  background: transparent;
+  color: var(--color-container);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.adminEditModal__form {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.adminEditModal__label {
+  font-family: var(--font-roboto);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.adminEditModal__input,
+.adminEditModal__textarea {
+  border: 1px solid var(--color-text);
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  font-family: var(--font-roboto);
+  background: #fff;
+}
+
+.adminEditModal__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.adminEditModal__btn {
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-bagel);
+  text-transform: uppercase;
+  box-shadow: -4px 4px 0 #222;
+  background: var(--color-button);
+  color: var(--color-container);
+}
+
+.adminEditModal__btn--secondary {
+  background: transparent;
+  color: var(--color-button);
+  border: 1px solid var(--color-button);
+  box-shadow: none;
+}
