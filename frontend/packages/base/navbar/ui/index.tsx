@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { CartIcon, Login } from "@app/base";
+import { CartIcon } from "@app/base";
 
 import { FaTimes, FaBars } from "react-icons/fa";
 import "./index.css";
@@ -28,7 +28,6 @@ export function Navbar() {
                 <div className="footer-content">
                     <p>nacho@email.com</p>
                     <p>+46 77 77 77</p>
-                    <Login type={"admin"} />
                 </div>
             </div>
             <NavLink to="/cart" className="navbar-cart">
