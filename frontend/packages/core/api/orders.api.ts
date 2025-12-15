@@ -5,6 +5,7 @@ interface ApiResponse<T> {
   message?: string;
   order?: T;
   orders?: T[];
+  orderId?: string;
 }
 
 export const OrderApi = {
