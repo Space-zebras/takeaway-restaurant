@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
-import './index.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./index.css";
+import { loginAdmin } from "@app/core";
 
-interface LoginProps {
-  type: 'admin';
-}
+/* interface LoginProps {
+  type: "admin";
+} */
 
-export const Login: React.FC<LoginProps> = ({}) => {
-  const [adminId, setId] = useState('');
-  const [password, setPassword] = useState('');
+export function Login() {
+  const [adminId, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {e.preventDefault();};
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await loginAdmin(adminId, password);
+    if (response?.successful) {
+      navigate("/admin");
+    } else {
+      console.log("Login failed");
+    }
+  };
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
@@ -30,4 +41,4 @@ export const Login: React.FC<LoginProps> = ({}) => {
       <button type="submit">Login</button>
     </form>
   );
-};
+}

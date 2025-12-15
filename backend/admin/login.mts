@@ -39,7 +39,7 @@ export const loginHandler = async (
     new GetItemCommand({
       TableName: tableName,
       Key: {
-        PK: { S: "ADMIN#root" },
+        PK: { S: `ADMIN#${adminId}` },
       },
     })
   );

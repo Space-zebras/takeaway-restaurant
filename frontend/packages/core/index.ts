@@ -14,3 +14,4 @@ export type { MenuItem } from "./api/menu.api";
 export { MenuApi } from "./api/menu.api";
 export type { Order, UserInfo, CreateOrderBody, UpdateOrderBody } from "./types/order-types"
 export { useCartStore, type CartItem } from "./stores";
+export { loginAdmin } from "./api/login.api";
