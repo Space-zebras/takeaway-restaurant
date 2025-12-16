@@ -24,6 +24,7 @@ export const ConfirmationPage: React.FC = () => {
           name: i.menuItem,
           quantity: i.quantity,
           price: i.price,
+          totalPrice: i.quantity * i.price,
         }))}
       />
 

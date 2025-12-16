@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "./index.css";
 
 type OrderActionsProps = {
@@ -7,7 +7,7 @@ type OrderActionsProps = {
 
 export function OrderActions({ status }: OrderActionsProps) {
   return (
-    <div className="orderActions">
+    <div className="orderActions" data-status={status}>
       <button className="orderActions__btn orderActions__btn--update">
         UPDATE ORDER
       </button>
