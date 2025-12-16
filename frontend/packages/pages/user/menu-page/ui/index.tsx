@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, FilterMenu, MenuItemCard } from "@app/base";
-import { useMenu } from "@app/core/hooks/useMenu";
+import { useMenu } from "@app/core";
 import "./index.css";
 
 export function MenuPage() {

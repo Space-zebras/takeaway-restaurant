@@ -1,26 +1,23 @@
-export const API_BASE = import.meta.env.VITE_API_BASE;
-
-export type MenuItem = {
-    id: string,
-    name: string,
-    category: string[],
-    ingredients: Record<string, number>,
-    description: string,
-    price: number, 
-    image: string,
-}
+import { http } from "./http";
+import type { MenuItem, UpdateMenuItemBody } from "@app/core";
 
 export interface MenuResponse {
     menu: MenuItem[],
     itemsCount: number
 }
 
-export const MenuApi = {
-  getMenu: async (): Promise<MenuItem[]> => {
-    const res = await fetch(`${API_BASE}/menu`);
-    if (!res.ok) throw new Error("Failed to fetch menu");
+interface UpdateMenuItemResponse {
+  message?: string,
+  menuItem: MenuItem
+}
 
-    const data: MenuResponse = await res.json();
-    return data.menu;
-  }
+export const MenuApi = {
+  getMenu: () =>
+    http<MenuResponse>("/menu"),
+
+  updateMenuItem: (id: string, body: UpdateMenuItemBody) =>
+    http<UpdateMenuItemResponse>(`/menu/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(body)
+    })
 };

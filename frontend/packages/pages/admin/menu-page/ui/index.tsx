@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@app/base";
-import { useMenu } from "@app/core/hooks/useMenu";
+import { useMenu } from "@app/core";
 import { AdminMenuItemCard } from "../children/admin-menuitem";
 import { AdminMenuItemEditModal } from "../children/admin-menuoverlay";
 import "./index.css";
@@ -10,7 +10,7 @@ type MenuItem = {
   name?: string;
   menuItem?: string;
   description?: string;
-  price?: number;
+  price: number;
   image?: string;
   ingredients?: any;
   category?: string[];
