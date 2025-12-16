@@ -1,12 +1,18 @@
 import { useCartStore } from "@app/core/";
 import { AmountButtons } from "@app/base";
-import type { MenuItem } from "@app/core/";
 import "./index.css";
 
-interface MenuItemCardProps extends MenuItem {
-  showAmountButtons?: boolean;
-  showDescription?: boolean;
-  showImage?: boolean;
+interface MenuItemCardProps {
+      id: string;
+      name: string;
+      price: number;
+      image: string;
+      description?: string;
+      category?: string[];
+      ingredients?: Record<string, number>;
+      showAmountButtons?: boolean;
+      showDescription?: boolean;
+      showImage?: boolean;
 }
 
 export function MenuItemCard(props: MenuItemCardProps) {
