@@ -42,6 +42,7 @@ export const OrdersPage: React.FC = () => {
 
   const handlePhoneSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("clicked on button")
     setSubmittedPhone(phoneInput.trim());
   };
 
@@ -60,7 +61,7 @@ export const OrdersPage: React.FC = () => {
                 value={phoneInput}
                 onChange={(e) => setPhoneInput(e.target.value)}
               />
-              <Button size="medium" text="Search" />
+              <Button size="medium" text="Search" type="submit"/>
             </form>
           </div>
         </Container>

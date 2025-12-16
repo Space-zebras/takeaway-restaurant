@@ -21,7 +21,7 @@ export function useUpdateOrder() {
           return res.order
 
         } catch (err: any) {
-            setError(err.message ?? "Något gick fel");
+            setError(err.message ?? "Something went wrong");
             throw err;
         } finally{
             setLoading(false);

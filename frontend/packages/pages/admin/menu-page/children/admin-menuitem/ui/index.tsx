@@ -6,6 +6,7 @@ type Props = {
   title: string;
   description: string;
   price: number;
+  image?: string;
   onEdit: () => void;
 };
 
