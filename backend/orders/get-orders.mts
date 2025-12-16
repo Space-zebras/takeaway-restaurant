@@ -23,17 +23,22 @@ export const handler = async (event: any) => {
             totalPrice: item.totalPrice?.S,
             createdAt: item.createdAt?.S,
             modifiedAt: item.modifiedAt?.S,
-            user: {
-                name: item.user.M.name.S,
-                phoneNumber: item.user.M.phoneNumber.S
-            },
-            cart: item.cart.L?.map((c: any) => ({
-                menuItem: c.M.menuItem.S,
-                qquantity: Number(c.M.quantity.N),
-                price: Number(c.M.price.N)
-            }))
 
-        }))
+            user: item.user?.M
+                ? {
+                    name: item.user.M.name?.S ?? null,
+                    phoneNumber: item.user.M.phoneNumber?.S ?? null
+                }
+                : null,
+
+            cart: item.cart?.L
+                ? item.cart.L.map((c: any) => ({
+                    menuItem: c.M?.menuItem?.S ?? null,
+                    quantity: Number(c.M?.quantity?.N ?? 0),
+                    price: Number(c.M?.price?.N ?? 0)
+                }))
+                : []
+        }));
 
         if(orders.length < 1) return responseHandler(200, {message: "No orders yet"});
 
