@@ -53,12 +53,12 @@ functions:
           path: /menu
           method: get
 
-  # updateMenuItem:
-  #   handler: menu/update-menu-item.mts
-  #   events:
-  #     - httpApi:
-  #         path: /menu/{id}
-  #         method: put
+  updateMenuItem:
+    handler: menu/update-menu-item.handler
+    events:
+      - httpApi:
+          path: /menu/{id}
+          method: put
 
   createOrder:
     handler: orders/create-order.handler
