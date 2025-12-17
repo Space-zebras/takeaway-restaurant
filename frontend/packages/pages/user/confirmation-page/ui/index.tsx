@@ -24,6 +24,7 @@ export const ConfirmationPage: React.FC = () => {
           name: i.menuItem,
           quantity: i.quantity,
           price: i.price,
+          
         }))}
       />
 
@@ -44,7 +45,7 @@ export const ConfirmationPage: React.FC = () => {
           }
         />
 
-        <OrderActions status={order.status} />
+        <OrderActions status={order.status} orderId={order.orderId}/>
       </Container>
     </main>
   );
