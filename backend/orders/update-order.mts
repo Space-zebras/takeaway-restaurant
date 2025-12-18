@@ -1,12 +1,15 @@
 import { client } from "../services/db.mjs";
 import { responseHandler } from "../services/response-handler.mjs";
 import { UpdateItemCommand, UpdateItemCommandOutput } from "@aws-sdk/client-dynamodb";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { apiKeyMiddleware } from "../middleware/api-key.mjs";
 
 interface UpdateOrderStatusBody {
     status: "PENDING" | "PREPARING" | "COMPLETE" | "CANCELLED"
 }
 
-export const handler = async (event: any) => {
+export const updateOrder = async (event: any) => {
     const TableName = process.env.ORDERS_TABLE;
     try {
         const orderId = event.pathParameters?.orderId;
@@ -79,3 +82,7 @@ export const handler = async (event: any) => {
         return responseHandler(500, {message: error.message})
     }
 }
+
+export const handler = middy(updateOrder)
+  .use(apiKeyMiddleware())
+  .use(httpErrorHandler());
