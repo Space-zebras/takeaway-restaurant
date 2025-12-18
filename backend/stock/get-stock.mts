@@ -1,13 +1,16 @@
 import { ScanCommand } from "@aws-sdk/client-dynamodb";
-import { client } from "../services/db.mts";
-import { responseHandler } from "../services/response-handler.mts";
+import { client } from "../services/db.mjs";
+import { responseHandler } from "../services/response-handler.mjs";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { apiKeyMiddleware } from "../middleware/api-key.mjs";
 
 interface StockItem {
   stockItem: string;
   quantity: number;
 }
 
-export const handler = async (): Promise<any> => {
+export const stock = async (): Promise<any> => {
   const TableName = "stock";
 
   try {
@@ -27,3 +30,7 @@ export const handler = async (): Promise<any> => {
     return responseHandler(500, { message: "Internal Server Error" });
   }
 };
+
+export const handler = middy(stock)
+  .use(apiKeyMiddleware())
+  .use(httpErrorHandler());
