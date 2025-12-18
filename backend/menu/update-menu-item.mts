@@ -1,7 +1,7 @@
 import { client } from "../services/db.mjs";
 import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { responseHandler } from "../services/response-handler.mjs";
-import { marshall } from "@aws-sdk/util-dynamodb";
+import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 
 export const handler = async (event: any) => {
   const TableName = process.env.MENU_TABLE;
@@ -14,36 +14,37 @@ export const handler = async (event: any) => {
 
     const body = JSON.parse(event.body || "{}");
 
+    /* tog bort name och category, kommer inte ihåg varför riktigt */
+    /* la till marshall som ändrar js-objekt till dynamoDB format */
     const command = new UpdateItemCommand({
       TableName,
-      Key: {
-        id: { S: id },
-      },
+      Key: marshall({
+        menuItem: id,
+    }),
       UpdateExpression: `
         SET
-          menuItem = :name,
-          category = :category,
-          description = :description,
-          ingredients = :ingredients,
-          imageUrl = :image,
-          price = :price
+            description = :description,
+            ingredients = :ingredients,
+            imageUrl = :image,
+            price = :price,
+            category = :category
       `,
-      ExpressionAttributeValues: {
-        ":name": { S: body.name || "" },
-        ":category": { SS: body.category || [] },
-        ":description": { S: body.description || "" },
-        ":ingredients": { M: marshall(body.ingredients || {}) },
-        ":image": { S: body.image || "" },
-        ":price": { N: String(body.price || 0) },
-      },
+      ExpressionAttributeValues: marshall({
+        ":description": body.description || "",
+        ":ingredients": body.ingredients || {},
+        ":image": body.image || "",
+        ":price": body.price || 0,
+        ":category": body.category || "",
+      }),
       ReturnValues: "ALL_NEW",
     });
 
     const result = await client.send(command);
+    const updatedItem = result.Attributes ? unmarshall(result.Attributes) : null;
 
     return responseHandler(200, {
       message: "Menu item updated",
-      item: result.Attributes,
+      menuItem: updatedItem,
     });
   } catch (error: any) {
     console.log(error);
