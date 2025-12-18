@@ -1,0 +1,29 @@
+import { ScanCommand } from "@aws-sdk/client-dynamodb";
+import { client } from "../services/db.mts";
+import { responseHandler } from "../services/response-handler.mts";
+
+interface StockItem {
+  stockItem: string;
+  quantity: number;
+}
+
+export const handler = async (): Promise<any> => {
+  const TableName = "stock";
+
+  try {
+    const data = await client.send(new ScanCommand({ TableName }));
+
+    const stock: StockItem[] = (data.Items || []).map((it: any) => ({
+      stockItem: it.stockItem?.S || "",
+      quantity: it.quantity?.N ? Number(it.quantity.N) : 0,
+    }));
+
+    return responseHandler(200, {
+      stock,
+      itemsCount: stock.length,
+    });
+  } catch (err: any) {
+    console.error("getStock error:", err);
+    return responseHandler(500, { message: "Internal Server Error" });
+  }
+};
