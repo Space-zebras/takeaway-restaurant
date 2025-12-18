@@ -9,6 +9,16 @@
   box-sizing: border-box;
 }
 
+.active-order__container{
+    width: 100%;
+    padding-bottom: 2rem;
+
+  h2{
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+}
+
 .form__container{
   margin: 0 auto;
   width: 50%;
