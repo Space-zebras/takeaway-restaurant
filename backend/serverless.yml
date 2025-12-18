@@ -98,6 +98,13 @@ functions:
           path: /orders/{orderId}
           method: put
 
+  getStock:
+    handler: stock/get-stock.handler
+    events:
+      - httpApi:
+          path: /stock
+          method: get
+
 resources:
   Resources:
     OrdersTable:

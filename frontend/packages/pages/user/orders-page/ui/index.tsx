@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import { Container, FilterOrders, OrderItem, Button } from "@app/base";
-import { useGetOrders } from "@app/core";
+import { useGetOrders, useGetOrderById } from "@app/core";
 
 function formatDate(dateString: string) {
   const d = new Date(dateString);
@@ -16,7 +16,9 @@ function formatDate(dateString: string) {
 }
 
 export const OrdersPage: React.FC = () => {
+  const activeOrderId = localStorage.getItem("activeOrderId")
   const { data, loading, error } = useGetOrders();
+  const { data: activeOrder, loading: activeOrderLoading, error: activeOrderError } = useGetOrderById(activeOrderId ?? "");
 
   const orders = data ?? [];
 
@@ -24,9 +26,12 @@ export const OrdersPage: React.FC = () => {
   const [phoneInput, setPhoneInput] = React.useState("");
   const [submittedPhone, setSubmittedPhone] = React.useState("");
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading || activeOrderLoading) return <p>Loading...</p>;
+  if (error || activeOrderError) return <p>Error: {error}</p>;
+  if(activeOrder?.status === "COMPLETE") {localStorage.removeItem("activeOrderId")}
 
+  const isActiveOrder = activeOrder && (activeOrder.status === "PENDING" || activeOrder.status === "PREPARING");
+  
   const hasSearched: boolean = submittedPhone.length > 0;
 
   const filteredOrdersByPhone = hasSearched
@@ -50,6 +55,15 @@ export const OrdersPage: React.FC = () => {
     <main className="ordersPage">
       {!hasSearched && (
         <Container title="Your Orders">
+          { isActiveOrder && (<div className="active-order__container">
+            <h2>Active order</h2>
+            <OrderItem 
+              key={activeOrder?.orderId}
+              date={formatDate(activeOrder?.modifiedAt)}
+              orderNumber={activeOrder?.orderId}
+              status={activeOrder?.status}
+            />
+          </div>)}
           <div className="form__container">
             <h2>Want to see your earlier orders?</h2>
             <form onSubmit={handlePhoneSubmit} className="form__group">

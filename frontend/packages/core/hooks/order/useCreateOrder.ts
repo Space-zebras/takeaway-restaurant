@@ -14,6 +14,7 @@ export function useCreateOrder() {
       const res = await OrderApi.createOrder(body);
 
       if (res.orderId) {
+        localStorage.setItem("activeOrderId", res.orderId);
         clearCart();
       }
 
