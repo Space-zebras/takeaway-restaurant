@@ -9,6 +9,7 @@ export { default as Nachos } from './assets/nachos.jpg';
 export { useGetOrders } from "./hooks/order/useGetOrders";
 export { useUpdateOrder } from "./hooks/order/useUpdateOrder"
 export { useCreateOrder } from "./hooks/order/useCreateOrder"
+export { useGetOrderById } from "./hooks/order/useGetOrderById"
 export { OrderApi } from "./api/orders.api";
 export { MenuApi } from "./api/menu.api";
 export type { Order, UserInfo, CreateOrderBody, UpdateOrderBody } from "./types/order-types"
