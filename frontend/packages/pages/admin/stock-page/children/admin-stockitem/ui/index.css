@@ -1,0 +1,33 @@
+.adminStockItem {
+  background: var(--color-container);
+  border: 1px solid var(--color-text);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.adminStockItem__name {
+  font-family: var(--font-roboto);
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+  color: var(--color-text);
+}
+
+.adminStockItem__qty {
+  font-family: var(--font-anton);
+  font-size: 1.2rem;
+}
+
+/* Stock level colours */
+.adminStockItem__qty--ok {
+  color: var(--color-button);
+}
+
+.adminStockItem__qty--medium {
+  color: #ef6c00;
+}
+
+.adminStockItem__qty--low {
+  color: #c62828;
+}
