@@ -1,0 +1,60 @@
+.adminMenuItemCard {
+  border: 1px solid var(--color-text);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  background: var(--color-container);
+}
+
+.adminMenuItemCard__topRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.adminMenuItemCard__title {
+  margin: 0;
+  font-family: var(--font-anton);
+  color: var(--color-text);
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.adminMenuItemCard__price {
+  font-family: var(--font-anton);
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.adminMenuItemCard__desc {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-roboto);
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.adminMenuItemCard__actions {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.adminMenuItemCard__editBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-bagel);
+  text-transform: uppercase;
+  box-shadow: -4px 4px 0 #222222;
+  background: var(--color-button);
+  color: var(--color-container);
+}
+
+.adminMenuItemCard__editBtn:hover {
+  opacity: 0.9;
+}

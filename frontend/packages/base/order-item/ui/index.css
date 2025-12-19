@@ -1,0 +1,118 @@
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-container);
+  border: 1px solid var(--color-text);
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  color: var(--color-button);
+  font-family: inherit;
+}
+
+/* LEft */
+.orderItem__leftCol {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-container);
+  gap: 0.25rem;
+}
+
+.orderItem__date {
+  font-size: 1rem;
+  margin: 0;
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  text-transform: uppercase;
+}
+
+.orderItem__order {
+  background: var(--color-container);
+  font-size: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.orderItem__orderLabel {
+  background: var(--color-container);
+  font-weight: 700;
+  font-family: var(--font-roboto);
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.orderItem__orderNumber {
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+}
+
+/* Middle */
+.orderItem__middleCol {
+  display: flex;
+  align-items: center;
+  background: var(--color-container);
+  gap: 0.4rem;
+  margin: 10px 30px 10px 30px;
+}
+
+.orderItem__statusLabel {
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+}
+
+.orderItem__statusValue {
+  text-transform: uppercase;
+  background: var(--color-container);
+  font-family: var(--font-roboto);
+  font-size: 1rem;
+}
+
+/* Right */
+.orderItem__rightCol {
+  background: var(--color-container);
+}
+
+.orderItem__rightCol button {
+  background: var(--color-button);
+  color: var(--color-container);
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+  font-family: var(--font-bagel);
+  font-weight: 400;
+  box-shadow: -3px 4px 0px #532d1f;
+}
+
+.orderItem__rightCol button:hover {
+  opacity: 0.9;
+}
+
+.orderLink {
+  background: var(--color-container);
+}
+
+@media (max-width: 600px) {
+  .orderItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .orderItem__middleCol {
+    margin: 0;
+  }
+
+  .orderItem__rightCol {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

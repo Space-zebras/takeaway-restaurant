@@ -1,0 +1,153 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.navbar-logo img {
+    height: 50px;
+    width: auto;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.nav-links-items {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-links a {
+    color: var(--color-container);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding-bottom: 2px;
+}
+
+.navbar-links a.active {
+    border-bottom: 1.5px solid var(--color-container);
+}
+
+.navbar-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.navbar-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-container);
+}
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        background-color: var(--color-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        display: none;
+        text-align: center;
+        color: var(--color-container);
+
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .navbar-hamburger {
+        display: block;
+    }
+
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        
+        height: 60px;
+        border: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: #3D5B36;
+        box-shadow: -0.3rem 0.3rem 0.1rem #4A2E1F;
+        border-radius: 2.5rem;
+        color: #F7F1E3;
+        font-family: "Bagel Fat One", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.03rem;
+
+        width: 95%;
+        font-size: 1.25rem;
+        padding: 1rem 2.5rem;
+        margin-bottom: 1rem;
+        margin-left: 0.8rem;
+    }
+
+    .mobile-nav-item {
+        flex: 1;
+        text-align: center;
+        color: var(--color-container);
+        font-size: 0.95rem;
+        text-decoration: none;
+    }
+
+    .mobile-nav-item svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .navbar-cart {
+        display: none;
+    }
+
+    .navbar-hamburger {
+        margin-right: 0.7rem;
+    }
+    
+    .navbar.menu-open .mobile-bottom-nav {
+        display: none;
+    }
+
+    .footer-content {
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .nav-links-items {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-family: var(--font-bagel);
+    }
+}

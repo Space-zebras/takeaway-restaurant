@@ -1,0 +1,4 @@
+{
+  "name": "@app/user-cart-page",
+  "main": "./index.ts"
+}

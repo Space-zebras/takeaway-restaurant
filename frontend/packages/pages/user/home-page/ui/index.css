@@ -1,0 +1,47 @@
+.home-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 6% auto;
+}
+
+.hero-section, .best-sellers{
+    width: 100%;
+}
+
+.click-container{
+    cursor: pointer;
+}
+
+.click-container:hover{
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+.home-page .button {
+    margin-top: 2rem;
+    height: 60px;
+}
+
+@media (max-width: 900px) {
+    .home-page{
+        grid-template-columns: 1fr;
+        width: 100%;
+        justify-items: center;
+    }
+    .hero-section, .best-sellers{
+        width: 500px;
+    }
+}
+
+@media (max-width: 550px) {
+    .best-sellers{
+        display: none;
+    }
+    .hero-section{
+    width: 100%;
+    }
+}

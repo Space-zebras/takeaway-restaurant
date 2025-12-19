@@ -1,0 +1,32 @@
+.confirmationPage {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6rem;
+  background: var(--color-background-red);
+}
+
+@media (max-width: 900px) {
+  .confirmationPage {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .confirmationPage .container {
+    max-width: 100%;
+  }
+
+  .receiptContainer {
+    order: 2;
+  }
+
+  .confirmationPage .container {
+    order: 1;
+  }
+}

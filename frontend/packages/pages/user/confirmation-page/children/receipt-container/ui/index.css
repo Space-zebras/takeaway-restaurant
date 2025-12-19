@@ -1,0 +1,92 @@
+.receiptContainer {
+  background: var(--color-container);
+  padding: 2rem;
+  width: 100%;
+  max-width: 25rem;
+  margin: 7rem auto 0; /* centers it horizontally */
+  color: var(--color-text);
+  box-sizing: border-box;
+}
+
+.receiptContainer__header {
+  background: var(--color-container);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  font-family: var(--font-anton);
+}
+
+.receiptContainer__label {
+  background: var(--color-container);
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  margin: 0;
+}
+
+.receiptContainer__orderNumber {
+  background: var(--color-container);
+  font-family: var(--font-anton);
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  color: var(--color-button);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.receiptContainer__items {
+  background: var(--color-container);
+  margin-bottom: 3rem;
+}
+
+.receiptContainer__row {
+  display: grid;
+  grid-template-columns: 1fr 30px 60px;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-roboto);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.receiptContainer__itemName {
+  background: var(--color-container);
+  text-transform: uppercase;
+}
+
+.receiptContainer__qty {
+  background: var(--color-container);
+  text-align: center;
+}
+
+.receiptContainer__price {
+  background: var(--color-container);
+  text-align: right;
+}
+
+.receiptContainer__totalRow {
+  background: var(--color-container);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+}
+
+.receiptContainer__totalLabel {
+  background: var(--color-container);
+  color: var(--color-button);
+}
+
+.receiptContainer__totalAmount {
+  background: var(--color-container);
+  color: var(--color-text);
+}
+
+@media (max-width: 600px) {
+  .receiptContainer {
+    padding: 1.5rem;
+    margin: 1rem 0 6rem 0;
+  }
+}
