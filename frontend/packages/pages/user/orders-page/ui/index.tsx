@@ -64,7 +64,7 @@ export const OrdersPage: React.FC = () => {
   return (
     <main className="ordersPage">
       {!hasSearched && (
-        <Container title="Your Orders">
+        <Container title="YOUR ORDERS">
           {isActiveOrder && (
             <div className="active-order__container">
               <h2 className="active-order__title">Active order</h2>

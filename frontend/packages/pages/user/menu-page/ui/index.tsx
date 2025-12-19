@@ -17,7 +17,7 @@ export function MenuPage() {
 
   return (
     <main className="menuPage">
-      <Container title="menu" variant="full">
+      <Container title="MENU" variant="full">
         <FilterMenu
           selected={selectedCategory}
           onSelect={setSelectedCategory}
