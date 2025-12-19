@@ -8,9 +8,9 @@ type Props = {
 export function AdminStockItem({ name, quantity }: Props) {
   let levelClass = "adminStockItem__qty--ok";
 
-  if (quantity <= 20) {
+  if (quantity <= 10) {
     levelClass = "adminStockItem__qty--low";
-  } else if (quantity <= 50) {
+  } else if (quantity <= 20) {
     levelClass = "adminStockItem__qty--medium";
   }
 

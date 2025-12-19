@@ -9,32 +9,33 @@
     display: flex;
     gap: 2rem;
     align-items: flex-start;
+    overflow: hidden; 
 }
 
 .images-wrapper {
     position: relative;
-    width: 320px;
-    height: 350px;
+    width: 20rem;
+    height: 30rem;
+    overflow: hidden; 
 }
 
 .bottom-image.left {
     position: absolute;
-    top: 120px;
+    top: 7.5rem;
     left: 0;
-    width: 300px;
+    width: 20rem;
     height: auto;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     z-index: 1;
 }
 
 .bottom-image.right {
     position: absolute;
-    top: 300px;
-    right: 0;
-    width: 200px;
+    top: 21.5em;
+    right: 2rem;
+    width: 12rem;
     height: auto;
-    border-radius: 8px;
-    z-index: 1;
+    border-radius: 0.5rem;
 }
 
 .top-image {
@@ -42,9 +43,9 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
+    width: 12rem;
     height: auto;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     z-index: 2;
 }
 

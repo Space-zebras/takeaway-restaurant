@@ -41,7 +41,13 @@ export const responseHandler = (
   const baseResponse = responses[status] || responses[500];
 
   return {
-    statusCode: baseResponse.status, headers,
+    statusCode: baseResponse.status,
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Security-Policy":
+        "default-src 'self'; script-src 'self' https://trusted.cdn.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; img-src 'self' https://trusted.images.com;",
+      ...(headers || {}),
+    },
     body: JSON.stringify({ ...baseResponse.body, ...(data || {}) }),
   };
 };

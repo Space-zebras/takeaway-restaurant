@@ -1,15 +1,18 @@
 import { Container } from "@app/base";
 import { AdminStockItem } from "../children/admin-stockitem";
+import { useGetStock } from "@app/core/hooks/stock/useGetStock";
 import "./index.css";
 
 export function AdminStockPage() {
-  // Mock data (backend hook later)
-  const stock = [
-    { stockItem: "Beans", quantity: 30 },
-    { stockItem: "Cheese", quantity: 12 },
-    { stockItem: "Tortilla", quantity: 50 },
-    { stockItem: "Rice", quantity: 65 },
-  ];
+  const { data, loading, error } = useGetStock();
+
+  if (loading) {
+    return <p>Loading stock...</p>;
+  }
+
+  if (error) {
+    return <p>Error loading stock: {error}</p>;
+  }
 
   return (
     <main className="adminStockPage">
@@ -20,7 +23,7 @@ export function AdminStockPage() {
         </div>
 
         <div className="adminStockPage__list">
-          {stock.map((item) => (
+          {data.map((item) => (
             <AdminStockItem
               key={item.stockItem}
               name={item.stockItem}
