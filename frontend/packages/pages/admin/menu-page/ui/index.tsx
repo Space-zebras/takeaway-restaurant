@@ -1,81 +1,72 @@
 import React from "react";
 import { Container } from "@app/base";
-import { useMenu } from "@app/core";
+import { useMenu, useUpdateMenuItem, type MenuItem } from "@app/core";
 import { AdminMenuItemCard } from "../children/admin-menuitem";
 import { AdminMenuItemEditModal } from "../children/admin-menuoverlay";
 import "./index.css";
 
-type MenuItem = {
-  id: string;
-  name?: string;
-  menuItem?: string;
-  description?: string;
-  price: number;
-  image?: string;
-  ingredients?: any;
-  category?: string[];
-};
-
-function toTitle(item: MenuItem) {
-  return item.name ?? item.menuItem ?? "Untitled item";
-}
-
-function ingredientsToString(ingredients: any) {
-  if (!ingredients) return "";
-  if (Array.isArray(ingredients)) return ingredients.join(", ");
-  if (typeof ingredients === "string") return ingredients;
-  if (typeof ingredients === "object")
-    return Object.keys(ingredients).join(", ");
-  return "";
-}
-
 export function AdminMenuPage() {
   const { data } = useMenu();
+  const { updateMenuItem } = useUpdateMenuItem();
   const [items, setItems] = React.useState<MenuItem[]>([]);
   const [selected, setSelected] = React.useState<MenuItem | null>(null);
 
   React.useEffect(() => {
-    setItems(data ?? []);
+    if (Array.isArray(data)) {
+      setItems(data as MenuItem[]);
+    }
   }, [data]);
 
   const handleOpenEdit = (item: MenuItem) => setSelected(item);
   const handleCloseEdit = () => setSelected(null);
 
-  const handleSave = (updated: {
+  const handleSave = async (updated: {
     id: string;
-    title: string;
+    name: string;
     price: number;
     description: string;
-    ingredients: string;
+    ingredients: Record<string, number>;
+    category?: string[];
   }) => {
-    setItems((prev) =>
-      prev.map((it) =>
-        it.id === updated.id
-          ? {
-              ...it,
-              name: updated.title,
-              description: updated.description,
-              price: updated.price,
-              ingredients: updated.ingredients,
-            }
-          : it
-      )
-    );
-    handleCloseEdit();
+    if (!selected) return;
+
+    try {
+      console.log("selected.id:", selected.id);
+      console.log("updated data being sent:", {
+        price: updated.price,
+        description: updated.description,
+        ingredients: updated.ingredients,
+        category: updated.category,
+      });
+      /* uppdatera menuitem i backend */
+      const updatedItem = await updateMenuItem(updated.id, {
+        name: selected.name,
+        price: updated.price,
+        description: updated.description,
+        ingredients: updated.ingredients,
+        category: updated.category,
+      });
+      console.log("Updated item returned from hook:", updatedItem);
+
+      /* ska ju uppdatera ui men tror ej det funkar som det ska */
+      setItems(prev =>
+        prev.map(item => (item.name === selected.name ? updatedItem : item))
+      );
+
+      handleCloseEdit();
+    } catch (error) {
+      console.error("Failed to update menu item", error);
+    }
   };
 
   return (
     <main className="adminMenuPage">
       <Container title="Manage Menu" variant="full">
         <div className="adminMenuGrid">
-          {items.map((item) => (
+          {items.map(item => (
             <AdminMenuItemCard
               key={item.id}
-              id={item.id}
-              title={toTitle(item)}
-              description={item.description ?? ""}
-              price={item.price}
-              image={item.image}
+              item={item}
               onEdit={() => handleOpenEdit(item)}
             />
           ))}
@@ -83,11 +74,7 @@ export function AdminMenuPage() {
 
         {selected && (
           <AdminMenuItemEditModal
-            id={selected.id}
-            initialTitle={toTitle(selected)}
-            initialPrice={selected.price}
-            initialDescription={selected.description ?? ""}
-            initialIngredients={ingredientsToString(selected.ingredients)}
+            item={selected}
             onClose={handleCloseEdit}
             onSave={handleSave}
           />

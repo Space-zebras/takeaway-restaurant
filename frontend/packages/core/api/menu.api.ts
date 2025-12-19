@@ -6,9 +6,18 @@ export interface MenuResponse {
     itemsCount: number
 }
 
-interface UpdateMenuItemResponse {
-  message?: string,
-  menuItem: MenuItem
+/* uppdaterade för backend returnerade inte ett menuItem i samma format(hade gått att flytta mapping till backend)*/
+export interface UpdateMenuItemResponse {
+  message?: string;
+  menuItem: {
+    id: string;
+    category: string[];
+    name?: string;
+    description: string;
+    price: number;
+    image?: string;
+    ingredients: Record<string, number>;
+  };
 }
 
 export const MenuApi = {
