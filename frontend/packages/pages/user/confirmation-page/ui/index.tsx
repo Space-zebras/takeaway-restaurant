@@ -35,7 +35,7 @@ export const ConfirmationPage: React.FC = () => {
           }))}
         />
 
-        <Container title="Order">
+        <Container title="ORDER">
           <OrderNumber orderNumber={order.orderId} />
 
           <OrderStatus

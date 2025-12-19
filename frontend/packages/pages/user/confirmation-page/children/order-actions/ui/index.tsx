@@ -53,13 +53,8 @@ export function OrderActions({
         </>
       )}
 
-      {/* COMPLETE action */}
-      {status === "COMPLETE" && (
-        <Button size="medium" text="ORDER AGAIN" onClick={onOrderAgain} />
-      )}
-
-      {/* CANCELLED action */}
-      {status === "CANCELLED" && (
+      {/* COMPLETE and CANCELLED actions */}
+      {(status === "COMPLETE" || status === "CANCELLED") && (
         <Button
           size="medium"
           text="BACK TO MENU"
