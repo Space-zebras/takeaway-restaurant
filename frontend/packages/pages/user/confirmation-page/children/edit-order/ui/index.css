@@ -1,0 +1,97 @@
+.editOrderOverlay__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.editOrderOverlay {
+  width: 100%;
+  max-width: 480px;
+  background: var(--color-container);
+  border-radius: 0 40px 0 40px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+.editOrderOverlay__header {
+  background: var(--color-button);
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editOrderOverlay__title {
+  margin: 0;
+  color: var(--color-container);
+  font-family: var(--font-bagel);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.editOrderOverlay__close {
+  border: none;
+  background: transparent;
+  color: var(--color-container);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.editOrderOverlay__form {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.editOrderOverlay__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.editOrderOverlay__itemName {
+  font-family: var(--font-roboto);
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.editOrderOverlay__qtyInput {
+  width: 70px;
+  padding: 0.4rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-text);
+  text-align: center;
+}
+
+.editOrderOverlay__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.editOrderOverlay__btn {
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-bagel);
+  text-transform: uppercase;
+  box-shadow: -4px 4px 0 #222;
+  background: var(--color-button);
+  color: var(--color-container);
+}
+
+.editOrderOverlay__btn--secondary {
+  background: transparent;
+  color: var(--color-button);
+  border: 1px solid var(--color-button);
+  box-shadow: none;
+}

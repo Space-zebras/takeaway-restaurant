@@ -16,3 +16,4 @@ export type { Order, UserInfo, CreateOrderBody, UpdateOrderBody } from "./types/
 export type { MenuItem, UpdateMenuItemBody } from "./types/menu-types"
 export { useCartStore, type CartItem } from "./stores";
 export { loginAdmin } from "./api/login.api";
+export { useUpdateMenuItem } from "./hooks/menu/useUpdateMenuItem.ts";
