@@ -46,7 +46,9 @@ export const updateMenu = async (event: any) => {
 
   const command = new UpdateItemCommand({
     TableName,
-    Key: { id: { S: id } },
+    Key: {
+      menuItem: { S: body.name },
+    },
     UpdateExpression: "SET " + parts.join(", "),
     ExpressionAttributeValues: values,
     ReturnValues: "ALL_NEW",
@@ -58,14 +60,14 @@ export const updateMenu = async (event: any) => {
 
     const updatedItem = attr
       ? {
-          id: attr.id?.S,
-          name: attr.menuItem?.S || "",
-          description: attr.description?.S || "",
-          ingredients: attr.ingredients?.M || {},
-          price: attr.price ? Number(attr.price.N) : 0,
-          category: attr.category?.SS || [],
-          image: attr.imageUrl?.S || "",
-        }
+        id: attr.id?.S,
+        name: attr.menuItem?.S || "",
+        description: attr.description?.S || "",
+        ingredients: attr.ingredients?.M || {},
+        price: attr.price ? Number(attr.price.N) : 0,
+        category: attr.category?.SS || [],
+        image: attr.imageUrl?.S || "",
+      }
       : null;
 
     return responseHandler(200, {
