@@ -14,17 +14,13 @@ export const handler = async (event: any) => {
 
     const body = JSON.parse(event.body || "{}");
 
-    /* tog bort name och category, kommer inte ihåg varför riktigt */
-    /* la till marshall som ändrar js-objekt till dynamoDB format */
-    // VI SÖKTE EFTER PRODUKTEN MED ID, MEN NAMNET ÄR VÅR PK SÅ SKICKAR MED GAMLA NAMNET NU
     const command = new UpdateItemCommand({
       TableName,
       Key: marshall({
-        menuItem: body.oldName,
+        menuItem: body.name,
     }),
       UpdateExpression: `
         SET
-            menuItem = :name,
             description = :description,
             ingredients = :ingredients,
             imageUrl = :image,
@@ -32,7 +28,6 @@ export const handler = async (event: any) => {
             category = :category
       `,
       ExpressionAttributeValues: marshall({
-        ":name": body.name || "",
         ":description": body.description || "",
         ":ingredients": body.ingredients || {},
         ":image": body.image || "",
