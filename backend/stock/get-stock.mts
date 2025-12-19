@@ -1,6 +1,6 @@
 import { ScanCommand } from "@aws-sdk/client-dynamodb";
-import { client } from "../services/db.mts";
-import { responseHandler } from "../services/response-handler.mts";
+import { client } from "../services/db.mjs";
+import { responseHandler } from "../services/response-handler.mjs";
 
 interface StockItem {
   stockItem: string;

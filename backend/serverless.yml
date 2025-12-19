@@ -103,6 +103,13 @@ functions:
           path: /stock
           method: get
 
+  updateStock:
+    handler: stock/update-stock.handler
+    events:
+      - httpApi:
+          path: /stock
+          method: put
+
 resources:
   Resources:
     OrdersTable:
