@@ -10,6 +10,7 @@ export interface MenuResponse {
 export interface UpdateMenuItemResponse {
   message?: string;
   menuItem: {
+    menuItem: string;
     id: string;
     category: string[];
     name?: string;

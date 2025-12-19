@@ -34,7 +34,7 @@ export function MenuPage() {
                   price={item.price}
                   image={item.image}
                   ingredients={item.ingredients} 
-                  category={[]}              
+                  category={item.category}              
               />
             );
           })}

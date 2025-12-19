@@ -20,7 +20,8 @@ export function useUpdateMenuItem() {
             const mappedUpdatedItem: MenuItem = {
                 id: res.menuItem.id,
                 category: res.menuItem.category || [],
-                name: res.menuItem.name ?? res.menuItem.id,
+                name: res.menuItem.menuItem,
+                // name: res.menuItem.name ?? res.menuItem.id,
                 description: res.menuItem.description,
                 price: res.menuItem.price,
                 image: res.menuItem.image || "",
