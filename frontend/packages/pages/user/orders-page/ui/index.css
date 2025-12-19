@@ -9,35 +9,39 @@
   box-sizing: border-box;
 }
 
-.active-order__container{
-    width: 100%;
-    padding-bottom: 2rem;
+.active-order__container {
+  width: 100%;
+  padding-bottom: 2rem;
 
-  h2{
+  h2 {
     text-align: center;
     padding-bottom: 2rem;
+    color: var(--color-text);
+    font-weight: 500;
   }
 }
 
-.form__container{
+.form__container {
   margin: 0 auto;
   width: 50%;
   min-width: 250px;
   display: flex;
   flex-direction: column;
 
-  h2{
+  h2 {
     text-align: center;
     padding-bottom: 2rem;
+    color: var(--color-text);
+    font-weight: 500;
   }
 
-  button{
+  button {
     margin-top: 2rem;
     width: 70%;
     align-self: center;
   }
 
-  input::placeholder{
+  input::placeholder {
     color: rgb(95, 95, 95);
   }
 }

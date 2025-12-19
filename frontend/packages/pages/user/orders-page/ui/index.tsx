@@ -16,9 +16,13 @@ function formatDate(dateString: string) {
 }
 
 export const OrdersPage: React.FC = () => {
-  const activeOrderId = localStorage.getItem("activeOrderId")
+  const activeOrderId = localStorage.getItem("activeOrderId");
   const { data, loading, error } = useGetOrders();
-  const { data: activeOrder, loading: activeOrderLoading, error: activeOrderError } = useGetOrderById(activeOrderId ?? "");
+  const {
+    data: activeOrder,
+    loading: activeOrderLoading,
+    error: activeOrderError,
+  } = useGetOrderById(activeOrderId || undefined);
 
   const orders = data ?? [];
 
@@ -26,12 +30,18 @@ export const OrdersPage: React.FC = () => {
   const [phoneInput, setPhoneInput] = React.useState("");
   const [submittedPhone, setSubmittedPhone] = React.useState("");
 
-  if (loading || activeOrderLoading) return <p>Loading...</p>;
+  if (loading || (activeOrderId && activeOrderLoading)) {
+    return <p>Loading...</p>;
+  }
   if (error || activeOrderError) return <p>Error: {error}</p>;
-  if(activeOrder?.status === "COMPLETE") {localStorage.removeItem("activeOrderId")}
+  if (activeOrder?.status === "COMPLETE") {
+    localStorage.removeItem("activeOrderId");
+  }
 
-  const isActiveOrder = activeOrder && (activeOrder.status === "PENDING" || activeOrder.status === "PREPARING");
-  
+  const isActiveOrder =
+    activeOrder &&
+    (activeOrder.status === "PENDING" || activeOrder.status === "PREPARING");
+
   const hasSearched: boolean = submittedPhone.length > 0;
 
   const filteredOrdersByPhone = hasSearched
@@ -47,7 +57,7 @@ export const OrdersPage: React.FC = () => {
 
   const handlePhoneSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("clicked on button")
+    console.log("clicked on button");
     setSubmittedPhone(phoneInput.trim());
   };
 
@@ -55,17 +65,19 @@ export const OrdersPage: React.FC = () => {
     <main className="ordersPage">
       {!hasSearched && (
         <Container title="Your Orders">
-          { isActiveOrder && (<div className="active-order__container">
-            <h2>Active order</h2>
-            <OrderItem 
-              key={activeOrder?.orderId}
-              date={formatDate(activeOrder?.modifiedAt)}
-              orderNumber={activeOrder?.orderId}
-              status={activeOrder?.status}
-            />
-          </div>)}
+          {isActiveOrder && (
+            <div className="active-order__container">
+              <h2 className="active-order__title">Active order</h2>
+              <OrderItem
+                key={activeOrder?.orderId}
+                date={formatDate(activeOrder?.modifiedAt)}
+                orderNumber={activeOrder?.orderId}
+                status={activeOrder?.status}
+              />
+            </div>
+          )}
           <div className="form__container">
-            <h2>Want to see your earlier orders?</h2>
+            <h2 className="form__title">Want to see your earlier orders?</h2>
             <form onSubmit={handlePhoneSubmit} className="form__group">
               <label className="form__label">Enter your phone number</label>
               <input
@@ -75,7 +87,7 @@ export const OrdersPage: React.FC = () => {
                 value={phoneInput}
                 onChange={(e) => setPhoneInput(e.target.value)}
               />
-              <Button size="medium" text="Search" type="submit"/>
+              <Button size="medium" text="Search" type="submit" />
             </form>
           </div>
         </Container>
