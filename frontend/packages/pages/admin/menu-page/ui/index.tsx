@@ -67,7 +67,7 @@ export function AdminMenuPage() {
         <div className="adminMenuGrid">
           {items.map(item => (
             <AdminMenuItemCard
-              key={item.id}
+              key={item.name}
               item={item}
               onEdit={() => handleOpenEdit(item)}
             />
