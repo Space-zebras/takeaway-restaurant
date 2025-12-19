@@ -30,6 +30,7 @@ type Props = {
     description: string;
     ingredients: Record<string, number>;
     category?: string[],
+    image: string
   }) => void;
 };
 
@@ -57,6 +58,7 @@ export function AdminMenuItemEditModal({
       description: description.trim(),
       ingredients: ingredientsStringToRecord(ingredients),
       category: category.split(",").map(c => c.trim()).filter(Boolean),
+      image: item.image
     });
 
     onClose();
