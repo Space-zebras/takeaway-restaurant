@@ -1,8 +1,11 @@
 import { ScanCommand } from "@aws-sdk/client-dynamodb";
 import { client } from "../services/db.mjs";
 import { responseHandler } from "../services/response-handler.mjs";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { apiKeyMiddleware } from "../middleware/api-key.mjs";
 
-export const handler = async () => {
+export const getMenu = async () => {
   const TableName = "menu";
 
   try {
@@ -24,3 +27,7 @@ export const handler = async () => {
     return responseHandler(500, { message: "Internal Server Error" });
   }
 };
+
+export const handler = middy(getMenu)
+  .use(apiKeyMiddleware())
+  .use(httpErrorHandler());

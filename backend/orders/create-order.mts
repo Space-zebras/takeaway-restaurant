@@ -2,6 +2,9 @@ import { client } from "../services/db.mjs";
 import { PutItemCommand, GetItemCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { responseHandler } from "../services/response-handler.mjs";
 import { v4 as uuid } from "uuid";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { apiKeyMiddleware } from "../middleware/api-key.mjs";
 
 export interface CartItem {
     menuItem: string,
@@ -21,7 +24,7 @@ export interface OrderBody {
     payment: "online" | "in-house";
 }
 
-export const handler = async (event: any) => {
+export const createOrder = async (event: any) => {
     try {
         if(!event.body) return responseHandler(404, { error: "body missing"});
 
@@ -89,3 +92,7 @@ export const handler = async (event: any) => {
         return responseHandler(500, { message: error.message });
     }
 }
+
+export const handler = middy(createOrder)
+  .use(apiKeyMiddleware())
+  .use(httpErrorHandler());

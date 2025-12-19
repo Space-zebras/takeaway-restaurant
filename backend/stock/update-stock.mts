@@ -1,13 +1,16 @@
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { client } from "../services/db.mjs";
 import { responseHandler } from "../services/response-handler.mjs";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { apiKeyMiddleware } from "../middleware/api-key.mjs";
 
 interface StockUpdate {
   name: string;
   quantity: number;
 }
 
-export const handler = async (event: any) => {
+export const updateStock = async (event: any) => {
   try {
     if (!event.body) {
       return responseHandler(400, { message: "Missing body" });
@@ -35,3 +38,7 @@ export const handler = async (event: any) => {
     return responseHandler(500, { message: error.message });
   }
 };
+
+export const handler = middy(updateStock)
+  .use(apiKeyMiddleware())
+  .use(httpErrorHandler());
