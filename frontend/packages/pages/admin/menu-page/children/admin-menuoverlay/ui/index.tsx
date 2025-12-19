@@ -1,47 +1,65 @@
 import React from "react";
+import type { MenuItem } from "@app/core";
 import "./index.css";
 
+//functions to convert ingredients
+  function ingredientsToString(ingredients?: Record<string, number>): string {
+  if (!ingredients || Object.keys(ingredients).length === 0) return "";
+  return Object.keys(ingredients).sort().join(", ");
+};
+
+function ingredientsStringToRecord(value: string): Record<string, number> {
+  if (!value.trim()) return {};
+  return value
+    .split(",")
+    .map(i => i.trim())
+    .filter(Boolean)
+    .reduce<Record<string, number>>((acc, ingredient) => {
+      acc[ingredient] = 1;
+      return acc;
+    }, {});
+}
+
 type Props = {
-  id: string;
-  initialTitle: string;
-  initialPrice: number;
-  initialDescription: string;
-  initialIngredients: string;
+  item: MenuItem,
   onClose: () => void;
   onSave: (updated: {
     id: string;
-    title: string;
+    name: string;
     price: number;
     description: string;
-    ingredients: string;
+    ingredients: Record<string, number>;
+    category?: string[],
   }) => void;
 };
 
+
+
 export function AdminMenuItemEditModal({
-  id,
-  initialTitle,
-  initialPrice,
-  initialDescription,
-  initialIngredients,
+  item,
   onClose,
   onSave,
 }: Props) {
-  const [title, setTitle] = React.useState(initialTitle);
-  const [price, setPrice] = React.useState(String(initialPrice));
-  const [description, setDescription] = React.useState(initialDescription);
-  const [ingredients, setIngredients] = React.useState(initialIngredients);
+  const [name, setName] = React.useState(item.name);
+  const [price, setPrice] = React.useState(String(item.price));
+  const [description, setDescription] = React.useState(item.description);
+  const [ingredients, setIngredients] = React.useState(ingredientsToString(item.ingredients));
+  const [category, setCategory] = React.useState(item.category.join(", "));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     const parsedPrice = Number(price);
+
     onSave({
-      id,
-      title: title.trim(),
-      price: Number.isFinite(parsedPrice) ? parsedPrice : initialPrice,
+      id: item.id,
+      name: name.trim(),
+      price: Number.isFinite(parsedPrice) ? parsedPrice : item.price,
       description: description.trim(),
-      ingredients: ingredients.trim(),
+      ingredients: ingredientsStringToRecord(ingredients),
+      category: category.split(",").map(c => c.trim()).filter(Boolean),
     });
+
+    onClose();
   };
 
   return (
@@ -59,8 +77,8 @@ export function AdminMenuItemEditModal({
             Name
             <input
               className="adminEditModal__input"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </label>
 
@@ -91,6 +109,16 @@ export function AdminMenuItemEditModal({
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
               placeholder="e.g. beef, salsa, cheese"
+            />
+          </label>
+
+          <label className="adminEditModal__label">
+            Category (comma separated)
+            <input
+              className="adminEditModal__input"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="e.g. Mexican, Vegan"
             />
           </label>
 
