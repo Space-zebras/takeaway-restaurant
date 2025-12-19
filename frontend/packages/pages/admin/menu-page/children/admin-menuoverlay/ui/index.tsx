@@ -74,12 +74,7 @@ export function AdminMenuItemEditModal({
 
         <form className="adminEditModal__form" onSubmit={handleSubmit}>
           <label className="adminEditModal__label">
-            Name
-            <input
-              className="adminEditModal__input"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <h3 className="adminEditModal__label">{name.toUpperCase()}</h3>
           </label>
 
           <label className="adminEditModal__label">
