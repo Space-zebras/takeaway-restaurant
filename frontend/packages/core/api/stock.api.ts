@@ -11,6 +11,18 @@ export type StockResponse = {
   successful?: boolean;
 };
 
+export type UpdateStockResponse = {
+  successful: boolean;
+  message: string;
+  updates: StockItem[];
+};
+
 export const StockApi = {
   getStock: () => http<StockResponse>("/stock"),
+  updateStock: (updates: StockItem[]) =>
+    http<UpdateStockResponse>("/stock", {
+      method: "PUT",
+      body: JSON.stringify(updates),
+    }),
 };
+
