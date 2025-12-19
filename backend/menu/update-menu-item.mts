@@ -2,8 +2,11 @@ import { client } from "../services/db.mjs";
 import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { responseHandler } from "../services/response-handler.mjs";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { apiKeyMiddleware } from "../middleware/api-key.mjs";
 
-export const handler = async (event: any) => {
+export const updateMenu = async (event: any) => {
   const TableName = process.env.MENU_TABLE;
 
   try {
@@ -49,3 +52,7 @@ export const handler = async (event: any) => {
     return responseHandler(500, { message: error.message });
   }
 };
+
+export const handler = middy(updateMenu)
+  .use(apiKeyMiddleware())
+  .use(httpErrorHandler());
