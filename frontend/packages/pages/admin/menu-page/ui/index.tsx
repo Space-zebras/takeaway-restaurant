@@ -27,6 +27,7 @@ export function AdminMenuPage() {
     description: string;
     ingredients: Record<string, number>;
     category?: string[];
+    image: string;
   }) => {
     if (!selected) return;
 
@@ -45,6 +46,7 @@ export function AdminMenuPage() {
         description: updated.description,
         ingredients: updated.ingredients,
         category: updated.category,
+        image: selected.image
       });
       console.log("Updated item returned from hook:", updatedItem);
 
