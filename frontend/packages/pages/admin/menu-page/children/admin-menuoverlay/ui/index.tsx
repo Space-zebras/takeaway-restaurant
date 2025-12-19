@@ -40,7 +40,7 @@ export function AdminMenuItemEditModal({
   onClose,
   onSave,
 }: Props) {
-  const [name, setName] = React.useState(item.name);
+  const [name] = React.useState(item.name);
   const [price, setPrice] = React.useState(String(item.price));
   const [description, setDescription] = React.useState(item.description);
   const [ingredients, setIngredients] = React.useState(ingredientsToString(item.ingredients));
