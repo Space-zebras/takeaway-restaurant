@@ -10,7 +10,7 @@ export function useGetStock() {
   useEffect(() => {
     StockApi.getStock()
       .then((res) => {
-        setData(res.items);
+        setData(res.stock ?? []);
       })
       .catch((err) => {
         setError(err.message ?? "Failed to load stock");

@@ -6,7 +6,9 @@ export type StockItem = {
 };
 
 export type StockResponse = {
-  items: StockItem[];
+  stock: StockItem[];
+  itemsCount?: number;
+  successful?: boolean;
 };
 
 export const StockApi = {
